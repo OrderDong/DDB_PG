@@ -1,0 +1,155 @@
+.layui-header {
+	border-bottom: 1px solid #ccc;
+}
+
+.dd-nav-img {
+	width: 40px;
+	height: 40px;
+	margin-right: 10px;
+	border-radius: 10%;
+}
+
+.layui-nav {
+	position: relative;
+	padding: 0 10px;
+	background-color: #f7f9f9;
+	color: #fff;
+	border-radius: 2px;
+	font-size: 0;
+	box-sizing: border-box;
+}
+
+.layui-nav .layui-nav-item a {
+	padding: 0 14px;
+	color: rgba(0, 0, 0, 0.7);
+}
+
+.layui-nav .layui-nav-item a:hover,
+.layui-nav .layui-this a {
+	color: #03b966;
+}
+
+.layui-nav .layui-this:after,
+.layui-nav-bar,
+.layui-nav-tree .layui-nav-itemed:after {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 2px;
+	background-color: #5FB878;
+	transition: all .2s;
+	-webkit-transition: all .2s;
+}
+
+
+/*我的--------------------------*/
+
+.dd-my-img {
+	width: 70px;
+	height: 70px;
+	margin-right: 10px;
+	border-radius: 50%;
+	float: left;
+}
+
+.layui-nav-my {
+	position: relative;
+	padding: 19px 21px;
+	border-radius: 2px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #ccc;
+	height: 102px;
+	width: 100%;
+}
+
+.dd-nav-item1 {
+	float: left;
+	padding-top: 10px;
+}
+
+.dd-nav-item2 {
+	float: right;
+	padding-top: 10px;
+}
+
+
+/*我的蛋蛋--------------------------*/
+
+.dandan-img {
+	height: 118px;
+	margin-right: 10px;
+	border-radius: 50%;
+	float: left;
+}
+
+.layui-nav-dandan {
+	position: relative;
+	padding: 15px 5px;
+	border-radius: 2px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #ccc;
+	height: 140px;
+	width: 100%;
+}
+
+.dandan-nav-item1 {
+	font-size: 28px;
+	float: left;
+	padding-top: 40px;
+	width: 15%;
+}
+
+.dandan-nav-item2 {
+	float: right;
+	padding-top: 10px;
+	width: 43%;
+}
+
+.dandan-nav-item3 {
+	float: right;
+	padding-top: 10px;
+	width: 50%;
+}
+
+.dandan-nav-item3-f {
+	font-size: 13px;
+	color: #868c92;
+}
+
+.dandan-nav-modal {
+	padding-top: 40px;
+}
+
+.dandan-modal {
+	text-align: center;
+    height: 119px;
+    padding: 10px 10px 10px 10px;
+    border-bottom: 1px solid #e3e0e0;
+    margin: 5px;
+}
+.dandan-modal-q {
+	text-align: center;
+	padding-top: 6px;
+}
+.layui-input1, .layui-textarea {
+    width: 24%;
+    padding-left: 10px;
+}
+
+.layui-input1, .layui-select, .layui-textarea {
+    height: 27px;
+    line-height: 1.3;
+    line-height: 38px\9;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.dandan-modal1 {
+    height: 119px;
+    padding: 10px 10px 10px 10px;
+    border-bottom: 1px solid #e3e0e0;
+    margin: 5px;
+    font-size: 11px;
+}

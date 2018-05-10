@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>开始使用layui</title>
+		<link rel="stylesheet" href="./layui/css/layui.css">
+		<link rel="stylesheet" href="./css/dd.css">
+		<link rel="stylesheet" href="./css/home.css">
+	</head>
+
+	<body class="">
+		<div class="dandan_app">
+			<!--头部-->
+			<div class="layui-header">
+				<ul class="layui-nav">
+					<li class="layui-nav-item" lay-unselect="">
+						<a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="dd-nav-img">蛋蛋的世界</a>
+					</li>
+				</ul>
+				<ul class="layui-nav layui-layout-right">
+
+					<li class="layui-nav-item">
+						<a href="javascript:;">
+							市场
+						</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">
+							战争
+						</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">
+							我的
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<!--主体-->
+			<div class="layui-container" style="text-align: center;">
+				<p><img src="./img/user.png" class="dd-upload"></p>
+				<br>
+				<p>
+					<a id="test1" style="font-size: 20px; color: #148907;" href="javascript:;">上传头像</a>
+				</p>
+				<br>
+				<p style="font-size: 12px;color: #545151;">昵称：</p>
+				<br>
+				<p><input style="width: 51%; display: inline-block;border-color: #b0adad!important;border-radius: 7px;text-align: center;" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入一个帅帅的名字" class="layui-input"></p>
+				<br>
+				<p style="font-size: 12px;color: #545151;">钱包地址：</p>
+				<br>
+				<p style="font-size: 12px;color: #545151;">23423432vrwecrcc23rc2c23223r2cr32rc23</p>
+				<br>
+				<br>
+				<button style="background-color: #6dce4b;padding: 0 45px;" class="layui-btn layui-btn-normal layui-btn-radius">进入游戏</button>
+			</div>
+		</div>
+
+		<script src="./layui/layui.js"></script>
+		<script>
+			//一般直接写在一个js文件中
+			layui.use(['layer', 'form', 'element', 'upload'], function() {
+				var layer = layui.layer,
+					element = layui.element,
+					form = layui.form,
+					upload = layui.upload;
+
+				//普通图片上传
+				var uploadInst = upload.render({
+					elem: '#test1',
+					url: '/upload/',
+					before: function(obj) {
+						//预读本地文件示例，不支持ie8
+						obj.preview(function(index, file, result) {
+							$('#demo1').attr('src', result); //图片链接（base64）
+						});
+					},
+					done: function(res) {
+						//如果上传失败
+						if(res.code > 0) {
+							return layer.msg('上传失败');
+						}
+						//上传成功
+					},
+					error: function() {
+						//演示失败状态，并实现重传
+						var demoText = $('#demoText');
+						demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+						demoText.find('.demo-reload').on('click', function() {
+							uploadInst.upload();
+						});
+					}
+				});
+				//layer.msg('Hello World');
+			});
+		</script>
+	</body>
+
+</html>
