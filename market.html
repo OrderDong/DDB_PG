@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用layui</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/dd.css">
+</head>
+
+<body class="">
+<div class="dandan_app">
+    <!--头部-->
+    <div class="layui-header">
+        <ul class="layui-nav">
+            <li class="layui-nav-item" lay-unselect="">
+                <a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="dd-nav-img">蛋蛋的世界</a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    市场
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    战争
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    我的
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--主体-->
+    <div class="layui-container">
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">蛋蛋の市场</li>
+                <li>买卖记录</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="market-ddfl">
+                        <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">白银蛋蛋</button>
+                        <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">黄金蛋蛋</button>
+                        <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">宝贝</button>
+                    </div>
+                    <div class="market-dd-box">
+                        <div class="market-dd-user">
+                            <img src="http://t.cn/RCzsdCq" class="market-dd-img">
+                            <p class="market-dd-name">superna</p>
+                        </div>
+                        <div class="market-dd-baby">
+                            <div class="market-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                            <p class="">价格：0.03ETH × 3 个</p>
+                            <button onclick="buyDD()" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">
+                                买入
+                            </button>
+                        </div>
+                    </div>
+                    <div class="market-dd-box">
+                        <div class="market-dd-user">
+                            <img src="http://t.cn/RCzsdCq" class="market-dd-img">
+                            <p class="market-dd-name">superna</p>
+                        </div>
+                        <div class="market-dd-baby">
+                            <div class="market-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                            <p class="">价格：0.03ETH × 3 个</p>
+                            <button onclick="buyDD()" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">
+                                买入
+                            </button>
+                        </div>
+                    </div>
+                    <div class="market-dd-box">
+                        <div class="market-dd-user">
+                            <img src="http://t.cn/RCzsdCq" class="market-dd-img">
+                            <p class="market-dd-name">superna</p>
+                        </div>
+                        <div class="market-dd-baby">
+                            <div class="market-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                            <p class="">价格：0.03ETH × 3 个</p>
+                            <button onclick="buyDD()" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">
+                                买入
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <dl class="record-nav">
+                        <dt class="record-nav1">
+                            <div class="record-nav-item1">
+                                2颗白银蛋蛋
+                            </div>
+                            <div class="record-nav-item2">
+                                卖出
+                            </div>
+                        </dt>
+                        <dt class="record-nav2">
+                            <div class="record-nav-item1">
+                                0.024 ETH 每颗
+                            </div>
+                            <div class="record-nav-item2">
+                                2018-05-02 19:21:00
+                            </div>
+                        </dt>
+                    </dl>
+                    <dl class="record-nav">
+                        <dt class="record-nav1">
+                            <div class="record-nav-item1">
+                                2颗白银蛋蛋
+                            </div>
+                            <div class="record-nav-item2">
+                                卖出
+                            </div>
+                        </dt>
+                        <dt class="record-nav2">
+                            <div class="record-nav-item1">
+                                0.024 ETH 每颗
+                            </div>
+                            <div class="record-nav-item2">
+                                2018-05-02 19:21:00
+                            </div>
+                        </dt>
+                    </dl>
+                    <dl class="record-nav">
+                        <dt class="record-nav1">
+                            <div class="record-nav-item1">
+                                2颗白银蛋蛋
+                            </div>
+                            <div class="record-nav-item2">
+                                卖出
+                            </div>
+                        </dt>
+                        <dt class="record-nav2">
+                            <div class="record-nav-item1">
+                                0.024 ETH 每颗
+                            </div>
+                            <div class="record-nav-item2">
+                                2018-05-02 19:21:00
+                            </div>
+                        </dt>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./layui/layui.js"></script>
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form', 'element'], function () {
+        var layer = layui.layer,
+            element = layui.element,
+            form = layui.form;
+
+//				layer.msg('Hello World');
+    });
+
+    function buyDD() {
+        layer.open({
+            title: '买入宝贝',
+            type: 1,
+            skin: 'layui-layer-demo', //样式类名
+            closeBtn: 1, //不显示关闭按钮
+            anim: 2,
+            area: ['315px', '240px'],
+            shadeClose: true, //开启遮罩关闭
+            content: '<div class="market-modal">'
+            + '<div class="market-modal-img"><img src="http://t.cn/RCzsdCq"></div>'
+            + '  <div class="market-modal-p"><p>价格：0.03ETH</p>'
+            + '    <p>数量：5个</p>'
+            + '    <p>总价：0.15ETH</p>'
+            + '  </div></div>'
+            + '<div class="market-modal-submit"><label class="layui-form-label1">买入数量：</label>'
+            + '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">-</button>'
+            + '<input type="text" name="title" class="layui-input1">'
+            + '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">+</button>'
+            + '<button class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius">买入</button></div>'
+        });
+    }
+
+</script>
+</body>
+
+</html>
