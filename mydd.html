@@ -1,174 +1,200 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>开始使用layui</title>
-		<link rel="stylesheet" href="./layui/css/layui.css">
-		<link rel="stylesheet" href="./css/dd.css">
-	</head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用layui</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/dd.css">
+</head>
 
-	<body class="">
-		<div class="dandan_app">
-			<!--头部-->
-			<div class="layui-header">
-				<ul class="layui-nav">
-					<li class="layui-nav-item" lay-unselect="">
-						<a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="dd-nav-img">蛋蛋的世界</a>
-					</li>
-				</ul>
-				<ul class="layui-nav layui-layout-right">
+<body class="">
+<div class="dandan_app">
+    <!--头部-->
+    <div class="layui-header">
+        <ul class="layui-nav">
+            <li class="layui-nav-item" lay-unselect="">
+                <a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="dd-nav-img">蛋蛋的世界</a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
 
-					<li class="layui-nav-item">
-						<a href="javascript:;">
-							市场
-						</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="javascript:;">
-							战争
-						</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="javascript:;">
-							我的
-						</a>
-					</li>
-				</ul>
-			</div>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    市场
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    战争
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    我的
+                </a>
+            </li>
+        </ul>
+    </div>
 
-			<!--主体-->
-			<div class="layui-container">
-				<dl id="" class="layui-nav-my">
-					<dt class="">
-						<img src="http://t.cn/RCzsdCq" class="dd-my-img">
-						<div class="dd-nav-item1">
-							<p>啊啊23</p>
-							<p style="font-size: 12px;">钱包：2.35ETH</p>
-						</div>
-						<div class="dd-nav-item2">
-							<button class="layui-btn layui-btn-primary layui-btn-radius">编辑</button>
-						</div>
-					</dt>
-				</dl>
-				<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-					<ul class="layui-tab-title">
-						<li class="layui-this">我的蛋蛋</li>
-						<li>我的宝贝</li>
-					</ul>
-					<div class="layui-tab-content" style="height: 100px;">
-						<div class="layui-tab-item layui-show">
-							<dl id="" class="layui-nav-dandan">
-								<dt class="">
-									<img src="./img/dandan.png" class="dandan-img">
-									<div class="dandan-nav-item1">
-										<p>× 5</p>
-									</div>
-									<div class="dandan-nav-item2">
-										<p>价格：0.023ETH</p>
-										<p>超过80%的卖家</p><br>
-										<button onclick="canlcelDD()" class="layui-btn layui-btn-primary layui-btn-sm layui-btn-radius">取消售卖</button>
-									</div>
-								</dt>
-							</dl>
-							<dl id="" class="layui-nav-dandan">
-								<dt class="">
-									<img src="./img/dandan.png" class="dandan-img">
-									<div class="dandan-nav-item1">
-										<p>× 8</p>
-									</div>
-									<div class="dandan-nav-item2">
-										<p>你的蛋蛋们正在安详的躺在蛋窝里~zzz</p>
-										<br>
-										<button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-radius">买入</button>
-										<button onclick="sellDD()" class="layui-btn layui-btn-danger layui-btn-sm layui-btn-radius">出售</button>
-									</div>
-								</dt>
-							</dl>
-						</div>
-						<div class="layui-tab-item">
-							<dl id="" class="layui-nav-dandan">
-								<dt class="">
-									<img src="./img/dandan.png" class="dandan-img">
-									<div class="dandan-nav-item1">
-										<p>× 5</p>
-									</div>
-									<div class="dandan-nav-item3">
-										<p>神奇宝宝龙</p><br>
-										<p class="dandan-nav-item3-f">攻击性：23</p>
-										<p class="dandan-nav-item3-f">成长性：43</p>
-										<p class="dandan-nav-item3-f">友善性：89</p>
-									</div>
-								</dt>
-							</dl>
-							<dl id="" class="layui-nav-dandan">
-								<dt class="">
-									<img src="./img/dandan.png" class="dandan-img">
-									<div class="dandan-nav-item1">
-										<p>× 5</p>
-									</div>
-									<div class="dandan-nav-item3">
-										<p>神奇宝宝龙</p><br>
-										<p class="dandan-nav-item3-f">攻击性：23</p>
-										<p class="dandan-nav-item3-f">成长性：43</p>
-										<p class="dandan-nav-item3-f">友善性：89</p>
-									</div>
-								</dt>
-							</dl>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    <!--主体-->
+    <div class="layui-container">
+        <dl id="" class="layui-nav-my">
+            <dt class="">
+                <img src="http://t.cn/RCzsdCq" class="dd-my-img">
+                <div class="dd-nav-item1">
+                    <p>啊啊23</p>
+                    <p style="font-size: 12px;">钱包：2.35ETH</p>
+                </div>
+                <div class="dd-nav-item2">
+                    <button class="layui-btn layui-btn-primary layui-btn-radius">编辑</button>
+                </div>
+            </dt>
+        </dl>
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">我的蛋蛋</li>
+                <li>我的宝贝</li>
+            </ul>
+            <div class="layui-tab-content" style="height: 100px;">
+                <div class="layui-tab-item layui-show">
+                    <dl id="" class="layui-nav-dandan">
+                        <dt class="">
+                            <img src="./img/dandan.png" class="dandan-img">
+                            <div class="dandan-nav-item1">
+                                <p>× 5</p>
+                            </div>
+                            <div class="dandan-nav-item2">
+                                <p>价格：0.023ETH</p>
+                                <p>超过80%的卖家</p><br>
+                                <button onclick="canlcelDD()"
+                                        class="layui-btn layui-btn-primary layui-btn-sm layui-btn-radius">取消售卖
+                                </button>
+                            </div>
+                        </dt>
+                    </dl>
+                    <dl id="" class="layui-nav-dandan">
+                        <dt class="">
+                            <img src="./img/dandan.png" class="dandan-img">
+                            <div class="dandan-nav-item1">
+                                <p>× 8</p>
+                            </div>
+                            <div class="dandan-nav-item2">
+                                <p>你的蛋蛋们正在安详的躺在蛋窝里~zzz</p>
+                                <br>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-radius">买入</button>
+                                <button onclick="sellDD()"
+                                        class="layui-btn layui-btn-danger layui-btn-sm layui-btn-radius">出售
+                                </button>
+                            </div>
+                        </dt>
+                    </dl>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="mydd-dd-baby">
+                        <div class="mydd-dd-type">
+                            <p>十二生肖动物（12张）
+                                <button style="float: right;"
+                                        class="layui-btn layui-btn-normal layui-btn-xs layui-btn-radius">去搜集
+                                </button>
+                            </p>
+                        </div>
+                        <div class="mydd-dd-box">
+                            <div class="mydd-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                        </div>
+                        <div class="mydd-dd-box">
+                            <div class="mydd-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                        </div>
+                        <div class="mydd-dd-box">
+                            <div class="mydd-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                        </div>
+                        <div class="mydd-dd-box">
+                            <div class="mydd-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                        </div>
+                    </div>
+                    <div class="mydd-dd-baby">
+                        <div class="mydd-dd-type">
+                            <p>卡罗牌（26张）
+                                <button style="float: right;"
+                                        class="layui-btn layui-btn-normal layui-btn-xs layui-btn-radius">去搜集
+                                </button>
+                            </p>
+                        </div>
+                        <div class="mydd-dd-box">
+                            <div class="mydd-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                        </div>
+                        <div class="mydd-dd-box">
+                            <div class="mydd-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                        </div>
+                        <div class="mydd-dd-box">
+                            <div class="mydd-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                        </div>
+                        <div class="mydd-dd-box">
+                            <div class="mydd-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                            <p class="">宝贝名称</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-		<script src="./layui/layui.js"></script>
-		<script>
-			//一般直接写在一个js文件中
-			layui.use(['layer', 'form', 'element'], function() {
-				var layer = layui.layer,
-					element = layui.element,
-					form = layui.form;
+<script src="./layui/layui.js"></script>
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form', 'element'], function () {
+        var layer = layui.layer,
+            element = layui.element,
+            form = layui.form;
 
 //				layer.msg('Hello World');
-			});
+    });
 
-			function canlcelDD() {
-				layer.open({
-					title: '撤回卖出',
-					type: 1,
-					skin: 'layui-layer-demo', //样式类名
-					closeBtn: 1, //不显示关闭按钮
-					anim: 2,
-					area: ['315px', '240px'],
-					shadeClose: true, //开启遮罩关闭
-					content: '<div class="dandan-modal"><img src="./img/dandan.png" class="dandan-img"><div class="dandan-nav-modal"><p>共5颗，是否确定撤回卖出？</p></div></div>'
-								+ '<div class="dandan-modal-q"><button style="background-color: #e3664c;padding: 0 30px;" class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius">确定撤回</button></div>'
-				});
-			}
-			
-			function sellDD() {
-				layer.open({
-					title: '卖出蛋蛋',
-					type: 1,
-					skin: 'layui-layer-demo', //样式类名
-					closeBtn: 1, //不显示关闭按钮
-					anim: 2,
-					area: ['315px', '240px'],
-					shadeClose: true, //开启遮罩关闭
-                    content: '<div class="dandan-modal1">'
-							+ '<div class="layui-form-item"><img src="./img/dandan.png" class="dandan-img">'
-							+ '    <p style="padding: 3px;"><label class="layui-form-label1">售出数量</label>'
-							+ '      <input type="text" name="title"  placeholder="请输入标题" class="layui-input1"></p>'
-							+ '    <p style="padding: 3px;"><label class="layui-form-label1">售出价格</label>'
-							+ '      <input type="text" name="title"  placeholder="请输入标题" class="layui-input1"> ETH</p>'
-							+ '    <p style="padding: 3px;">高出均价：+2.3%</p>'
-							+ '    <p style="padding: 3px;">现市场平均价：0.025ETH</p>'
-							+ '  </div></div>'
-							+ '<div class="dandan-modal-q"><button style="background-color: #e3664c;padding: 0 30px;" class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius">确定出售</button></div>'
-				});
-			}
-		</script>
-	</body>
+    function canlcelDD() {
+        layer.open({
+            title: '撤回卖出',
+            type: 1,
+            skin: 'layui-layer-demo', //样式类名
+            closeBtn: 1, //不显示关闭按钮
+            anim: 2,
+            area: ['315px', '240px'],
+            shadeClose: true, //开启遮罩关闭
+            content: '<div class="dandan-modal"><img src="./img/dandan.png" class="dandan-img"><div class="dandan-nav-modal"><p>共5颗，是否确定撤回卖出？</p></div></div>'
+            + '<div class="dandan-modal-q"><button style="background-color: #e3664c;padding: 0 30px;" class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius">确定撤回</button></div>'
+        });
+    }
+
+    function sellDD() {
+        layer.open({
+            title: '卖出蛋蛋',
+            type: 1,
+            skin: 'layui-layer-demo', //样式类名
+            closeBtn: 1, //不显示关闭按钮
+            anim: 2,
+            area: ['315px', '240px'],
+            shadeClose: true, //开启遮罩关闭
+            content: '<div class="dandan-modal1">'
+            + '<div class="layui-form-item"><img src="./img/dandan.png" class="dandan-img">'
+            + '    <p style="padding: 3px;"><label class="layui-form-label1">售出数量</label>'
+            + '      <input type="text" name="title"  placeholder="请输入标题" class="layui-input1"></p>'
+            + '    <p style="padding: 3px;"><label class="layui-form-label1">售出价格</label>'
+            + '      <input type="text" name="title"  placeholder="请输入标题" class="layui-input1"> ETH</p>'
+            + '    <p style="padding: 3px;">高出均价：+2.3%</p>'
+            + '    <p style="padding: 3px;">现市场平均价：0.025ETH</p>'
+            + '  </div></div>'
+            + '<div class="dandan-modal-q"><button style="background-color: #e3664c;padding: 0 30px;" class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius">确定出售</button></div>'
+        });
+    }
+</script>
+</body>
 
 </html>
