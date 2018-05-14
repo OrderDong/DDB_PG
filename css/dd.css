@@ -296,6 +296,8 @@
 /*战争=================================*/
 .battle-dd-item {
     text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
 }
 .battle-dd-byzs {
     border-bottom: 1px solid #ccc;

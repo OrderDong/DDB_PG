@@ -21,24 +21,23 @@
 						<a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="dd-nav-img">蛋蛋的世界</a>
 					</li>
 				</ul>
-				<ul class="layui-nav layui-layout-right">
-
-					<li class="layui-nav-item">
-						<a href="javascript:;">
-							市场
-						</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="javascript:;">
-							战争
-						</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="javascript:;">
-							我的
-						</a>
-					</li>
-				</ul>
+                <ul class="layui-nav layui-layout-right">
+                    <li class="layui-nav-item">
+                        <a href="market.html">
+                            市场
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="battle.html">
+                            战争
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="mydd.html">
+                            我的
+                        </a>
+                    </li>
+                </ul>
 			</div>
 
 			<!--主体-->
@@ -51,14 +50,14 @@
 				<br>
 				<p style="font-size: 12px;color: #545151;">昵称：</p>
 				<br>
-				<p><input style="width: 51%; display: inline-block;border-color: #b0adad!important;border-radius: 7px;text-align: center;" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入一个帅帅的名字" class="layui-input"></p>
+				<p><input id="userName" style="width: 51%; display: inline-block;border-color: #b0adad!important;border-radius: 7px;text-align: center;" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入一个帅帅的名字" class="layui-input"></p>
 				<br>
 				<p style="font-size: 12px;color: #545151;">钱包地址：</p>
 				<br>
 				<p style="font-size: 12px;color: #545151;" id="addressId"></p>
 				<br>
 				<br>
-				<button style="background-color: #6dce4b;padding: 0 45px;" class="layui-btn layui-btn-normal layui-btn-radius">进入游戏</button>
+				<button onclick="goToPlay()" style="background-color: #6dce4b;padding: 0 45px;" class="layui-btn layui-btn-normal layui-btn-radius">进入游戏</button>
 			</div>
 		</div>
 
@@ -103,6 +102,12 @@
 		<script type="text/javascript" src="js/app.js" ></script>
 		<script>
 			$("#addressId").html(web3.eth.defaultAccount);
+
+            $("#userName").val(localStorage.getItem("userName"));
+			function goToPlay() {
+                localStorage.setItem("userName",$("#userName").val());
+                location.href = 'mydd.html';
+            }
 		</script>
 	</body>
 

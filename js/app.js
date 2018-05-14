@@ -60,6 +60,28 @@ window.addEventListener('load', function() {
     console.log("into net web3");
     window.web3 = new Web3(web3.currentProvider);
     //window.web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
+
+      web3.version.getNetwork(function(err, netId){
+          switch (netId) {
+          case "1":
+              console.log('This is mainnet')
+              break
+          case "2":
+              console.log('This is the deprecated Morden test network.')
+              break
+          case "3":
+              console.log('This is the ropsten test network.')
+              break
+          case "4":
+              console.log('This is the Rinkeby test network.')
+              break
+          case "42":
+              console.log('This is the Kovan test network.')
+              break
+          default:
+              console.log('This is an unknown network.')
+          }
+      })
   } else {
     console.warn("No web3 detected. Falling back to http://127.0.0.1:9545. You should remove this fallback when you deploy live, as it's inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask");
     console.log("intall matemask");

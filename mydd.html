@@ -7,6 +7,10 @@
     <title>开始使用layui</title>
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link rel="stylesheet" href="./css/dd.css">
+    <script language="javascript" type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script language="javascript" type="text/javascript" src="./js/web3.min.js"></script>-->
+    <script language="javascript" type="text/javascript" src="./js/salesAndPlay_abi.js"></script>
 </head>
 
 <body class="">
@@ -19,19 +23,18 @@
             </li>
         </ul>
         <ul class="layui-nav layui-layout-right">
-
             <li class="layui-nav-item">
-                <a href="javascript:;">
+                <a href="market.html">
                     市场
                 </a>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">
+                <a href="battle.html">
                     战争
                 </a>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">
+                <a href="mydd.html">
                     我的
                 </a>
             </li>
@@ -44,7 +47,7 @@
             <dt class="">
                 <img src="http://t.cn/RCzsdCq" class="dd-my-img">
                 <div class="dd-nav-item1">
-                    <p>啊啊23</p>
+                    <p id="userName">啊啊23</p>
                     <p style="font-size: 12px;">钱包：2.35ETH</p>
                 </div>
                 <div class="dd-nav-item2">
@@ -149,6 +152,7 @@
 </div>
 
 <script src="./layui/layui.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
 <script>
     //一般直接写在一个js文件中
     layui.use(['layer', 'form', 'element'], function () {
@@ -158,6 +162,27 @@
 
 //				layer.msg('Hello World');
     });
+
+    $("#userName").html(localStorage.getItem("userName"));
+    var salesAndPlayAddress = "0x201EfdE2733beE048fCE6368D01A074F30a6F456";
+    var salesAndPlay = new web3.eth.contract(SalesAndPlayABI, salesAndPlayAddress);
+    var account = web3.eth.accounts[0];
+    var accountInterval = setInterval(function() {
+        if (web3.eth.accounts[0] !== account) {
+            account = web3.eth.accounts[0];
+        }
+    }, 100);
+
+    getEggList();
+
+    function getEggList() {
+        console.log(salesAndPlay);
+        salesAndPlay.methods.getEggList(account).call()
+            .then(function (result) {
+                console.log(result);
+            });
+    }
+
 
     function canlcelDD() {
         layer.open({
