@@ -168,7 +168,7 @@
 
     $("#userName").html(localStorage.getItem("userName"));
 
-    var salesAndPlayInstance = initContractsalesAndPlay(SalesAndPlayABI);
+    var salesAndPlayInstance = initContractAuction(SalesAndPlayABI);
     var danDanCoinInstance = initContractDanDan(DanDanABI);
 
 
@@ -180,7 +180,6 @@
             $("#userETH").html(balance + " ETH（以太坊）");
         });
 
-        console.log(danDanCoinInstance);
         danDanCoinInstance.balanceOf(account, function (error, result) {
             var resWei = web3.toWei(result.toString(), 'wei');
             var resEther = web3.fromWei(resWei, 'ether');
@@ -190,12 +189,16 @@
         salesAndPlayInstance.getEggList(account, function (error, result) {
             for (var i = 0; i < result.length; i++) {
                 salesAndPlayInstance.getEggByType(result[i], function (error1, result1) {
-                    console.log(result1[2].toString());
+                    console.log(result1[3].toString());
                     $("#dandan_number").html("× " + result1[1].toString());
 
                 });
             }
         });
+    }
+
+    function createEggAuction(price, expiresAt, count, eType, level) {
+
     }
 
     function canlcelDD() {
@@ -224,13 +227,25 @@
             content: '<div class="dandan-modal1">'
             + '<div class="layui-form-item"><img src="./img/dandan.png" class="dandan-img">'
             + '    <p style="padding: 3px;"><label class="layui-form-label1">售出数量</label>'
-            + '      <input type="text" name="title"  placeholder="请输入标题" class="layui-input1"></p>'
+            + '      <input type="text" id="dd_number" name="title"  placeholder="请输入数量" class="layui-input1"></p>'
             + '    <p style="padding: 3px;"><label class="layui-form-label1">售出价格</label>'
-            + '      <input type="text" name="title"  placeholder="请输入标题" class="layui-input1"> ETH</p>'
+            + '      <input type="text" name="title" id="dd_price" placeholder="请输入价格" class="layui-input1"> ETH</p>'
             + '    <p style="padding: 3px;">高出均价：+2.3%</p>'
             + '    <p style="padding: 3px;">现市场平均价：0.025ETH</p>'
             + '  </div></div>'
-            + '<div class="dandan-modal-q"><button style="background-color: #e3664c;padding: 0 30px;" class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius">确定出售</button></div>'
+            , btn: ['确定出售', '取消']
+            , yes: function (index, layero) {
+                var count = $("#dd_number").val();
+                var price = $("#dd_price").val();
+                var expiresAt = new Date().getTime() * 2;
+                var eType = "0";
+                var level = "0";
+                console.log(expiresAt);
+
+                salesAndPlayInstance.createEggAuction.sendTransaction(price, expiresAt, count, eType, function (error, result) {
+
+                });
+            }
         });
     }
 </script>

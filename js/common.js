@@ -1,6 +1,5 @@
 var auctionAddr = "0x6D38299e02Bd2884e43D59030a7Eab9fb1907EE7";
 var tokenAddr = "0x4195E850A8504ef0Cc184Ac1FC22B5Ee5AF0321B";
-var salesAndPlayAddr = "0x201EfdE2733beE048fCE6368D01A074F30a6F456";
 var actionInstance;
 
 var account = web3.eth.accounts[0];
@@ -20,12 +19,6 @@ function initContractAuction(salesAbi){
 	var MyContract = web3.eth.contract(salesAbi);
 	actionInstance = MyContract.at(auctionAddr);
 	return actionInstance;
-}
-
-function initContractsalesAndPlay(abi){
-    var MyContract = web3.eth.contract(abi);
-    actionInstance = MyContract.at(salesAndPlayAddr);
-    return actionInstance;
 }
 
 window.addEventListener('load', function() {
