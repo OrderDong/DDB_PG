@@ -165,9 +165,15 @@
 
     $("#userName").html(localStorage.getItem("userName"));
     var salesAndPlayAddress = "0x201EfdE2733beE048fCE6368D01A074F30a6F456";
-    var salesAndPlay = new web3.eth.contract(SalesAndPlayABI, salesAndPlayAddress);
+    // creation of contract object
+    var MyContract = web3.eth.contract(SalesAndPlayABI);
+
+    // initiate contract for an address
+    var myContractInstance = MyContract.at(salesAndPlayAddress);
+
+    //    var salesAndPlay = new web3.eth.contract(SalesAndPlayABI, salesAndPlayAddress);
     var account = web3.eth.accounts[0];
-    var accountInterval = setInterval(function() {
+    var accountInterval = setInterval(function () {
         if (web3.eth.accounts[0] !== account) {
             account = web3.eth.accounts[0];
         }
@@ -176,13 +182,11 @@
     getEggList();
 
     function getEggList() {
-        console.log(salesAndPlay);
-        salesAndPlay.methods.getEggList(account).call()
-            .then(function (result) {
-                console.log(result);
-            });
+        console.log(myContractInstance);
+        myContractInstance.getEggList(account, function (error, result) {
+            console.log(result);
+        });
     }
-
 
     function canlcelDD() {
         layer.open({
