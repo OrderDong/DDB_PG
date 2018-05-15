@@ -69,8 +69,8 @@
                         </div>-->
                     </div>
                 </div>
-                <div class="layui-tab-item">
-                    <dl class="record-nav">
+                <div class="layui-tab-item" id="salesRecord">
+                    <!--<dl class="record-nav">
                         <dt class="record-nav1">
                             <div class="record-nav-item1">
                                 2颗白银蛋蛋
@@ -87,43 +87,7 @@
                                 2018-05-02 19:21:00
                             </div>
                         </dt>
-                    </dl>
-                    <dl class="record-nav">
-                        <dt class="record-nav1">
-                            <div class="record-nav-item1">
-                                2颗白银蛋蛋
-                            </div>
-                            <div class="record-nav-item2">
-                                卖出
-                            </div>
-                        </dt>
-                        <dt class="record-nav2">
-                            <div class="record-nav-item1">
-                                0.024 ETH 每颗
-                            </div>
-                            <div class="record-nav-item2">
-                                2018-05-02 19:21:00
-                            </div>
-                        </dt>
-                    </dl>
-                    <dl class="record-nav">
-                        <dt class="record-nav1">
-                            <div class="record-nav-item1">
-                                2颗白银蛋蛋
-                            </div>
-                            <div class="record-nav-item2">
-                                卖出
-                            </div>
-                        </dt>
-                        <dt class="record-nav2">
-                            <div class="record-nav-item1">
-                                0.024 ETH 每颗
-                            </div>
-                            <div class="record-nav-item2">
-                                2018-05-02 19:21:00
-                            </div>
-                        </dt>
-                    </dl>
+                    </dl>-->
                 </div>
             </div>
         </div>
@@ -143,6 +107,38 @@
     var actionInstance = initContractAuction(SalesAndPlayABI);
     var account = web3.eth.defaultAccount;
     var userName = localStorage.getItem("userName");
+
+    var myEvent = actionInstance.AuctionSuccessful({winner: account}, {fromBlock: 0, toBlock: 'latest'});
+    myEvent.watch(function(error, result){
+//        console.log(result);
+        var args = result.args;
+        var eType = args.eType.toString();
+        var salesCount = args.salesCount.toString();
+        var eTypeName;
+        if (eType == 0) {
+            eTypeName = " 颗白银蛋蛋";
+        }
+        var totalPrice = web3.fromWei(parseInt(args.totalPrice.toString())/parseInt(salesCount), 'ether');
+
+        $("#salesRecord").append('' +
+            '    <dl class="record-nav">\n' +
+            '        <dt class="record-nav1">\n' +
+            '        <div class="record-nav-item1">\n' + salesCount + eTypeName + '</div>\n' +
+            '    <div class="record-nav-item2">\n' +
+            '        买入\n' +
+            '        </div>\n' +
+            '        </dt>\n' +
+            '        <dt class="record-nav2">\n' +
+            '        <div class="record-nav-item1">\n' + totalPrice +
+            '         ETH 每颗\n' +
+            '    </div>\n' +
+            '    <div class="record-nav-item2">\n' +
+            '        2018-05-02 19:21:00\n' +
+            '    </div>\n' +
+            '    </dt>\n' +
+            '    </dl>');
+
+    });
 
     function getAuctionList() {
         //console.log(actionInstance);
@@ -230,10 +226,9 @@
 //            console.log("购买成功！", zombie._auctionId, zombie.price, zombie._count);
 //        }).on('error', console.error);
 
-//        var web3Infura = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
-//        var czEvents = new web3Infura.eth.Contract(SalesAndPlayABI, "0xF59b32aB210cC993AF82551B90eEF3AFcec47d47");
 
-        var events = actionInstance.allEvents({fromBlock: 0, toBlock: 'latest'});
+
+
     }
 
 

@@ -1,5 +1,42 @@
 var SalesAndPlayABI = [
     {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_auctionId",
+                "type": "uint256"
+            },
+            {
+                "name": "_count",
+                "type": "uint256"
+            }
+        ],
+        "name": "executeEggAuction",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_eType",
+                "type": "uint8"
+            }
+        ],
+        "name": "getEggCount",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "constant": true,
         "inputs": [
             {
@@ -129,6 +166,10 @@ var SalesAndPlayABI = [
                 "type": "address"
             },
             {
+                "name": "name",
+                "type": "string"
+            },
+            {
                 "name": "price",
                 "type": "uint256"
             },
@@ -157,6 +198,25 @@ var SalesAndPlayABI = [
             {
                 "name": "",
                 "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_eType",
+                "type": "uint8"
+            }
+        ],
+        "name": "getAuctionByType",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
             }
         ],
         "payable": false,
@@ -221,13 +281,72 @@ var SalesAndPlayABI = [
         "type": "function"
     },
     {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "priceInWei",
+                "type": "uint256"
+            },
+            {
+                "name": "expiresAt",
+                "type": "uint256"
+            },
+            {
+                "name": "_count",
+                "type": "uint256"
+            },
+            {
+                "name": "_eType",
+                "type": "uint8"
+            },
+            {
+                "name": "_name",
+                "type": "string"
+            }
+        ],
+        "name": "createEggAuction",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
         "constant": true,
-        "inputs": [],
-        "name": "ownerCutPercentage",
+        "inputs": [
+            {
+                "name": "_id",
+                "type": "uint256"
+            }
+        ],
+        "name": "getAuction",
         "outputs": [
             {
-                "name": "",
+                "name": "id",
                 "type": "uint256"
+            },
+            {
+                "name": "seller",
+                "type": "address"
+            },
+            {
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "price",
+                "type": "uint256"
+            },
+            {
+                "name": "expiresAt",
+                "type": "uint256"
+            },
+            {
+                "name": "salesCount",
+                "type": "uint256"
+            },
+            {
+                "name": "eType",
+                "type": "uint8"
             }
         ],
         "payable": false,
@@ -337,6 +456,52 @@ var SalesAndPlayABI = [
     {
         "constant": true,
         "inputs": [],
+        "name": "getAuctions",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "name": "",
+                "type": "uint256[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdrawBalance",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_auctionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "cancelEggAuction",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
         "name": "TRANSFER_STAND",
         "outputs": [
             {
@@ -406,6 +571,48 @@ var SalesAndPlayABI = [
             },
             {
                 "indexed": true,
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "name": "priceInWei",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "time",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "count",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "eType",
+                "type": "uint8"
+            }
+        ],
+        "name": "ExchangeCreated",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
                 "name": "seller",
                 "type": "address"
             },
@@ -463,6 +670,11 @@ var SalesAndPlayABI = [
             },
             {
                 "indexed": false,
+                "name": "time",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
                 "name": "eType",
                 "type": "uint8"
             }
@@ -487,33 +699,14 @@ var SalesAndPlayABI = [
                 "indexed": true,
                 "name": "seller",
                 "type": "address"
+            },
+            {
+                "indexed": false,
+                "name": "time",
+                "type": "uint256"
             }
         ],
         "name": "AuctionCancelled",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "name": "publicationFee",
-                "type": "uint256"
-            }
-        ],
-        "name": "ChangedPublicationFee",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "name": "ownerCut",
-                "type": "uint256"
-            }
-        ],
-        "name": "ChangedOwnerCut",
         "type": "event"
     },
     {
@@ -618,11 +811,7 @@ var SalesAndPlayABI = [
         "constant": false,
         "inputs": [
             {
-                "name": "priceInWei",
-                "type": "uint256"
-            },
-            {
-                "name": "expiresAt",
+                "name": "_auctionId",
                 "type": "uint256"
             },
             {
@@ -632,101 +821,38 @@ var SalesAndPlayABI = [
             {
                 "name": "_eType",
                 "type": "uint8"
-            }
-        ],
-        "name": "createEggAuction",
-        "outputs": [],
-        "payable": true,
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_auctionId",
-                "type": "uint256"
-            }
-        ],
-        "name": "cancelEggAuction",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_auctionId",
-                "type": "uint256"
             },
             {
-                "name": "_count",
-                "type": "uint256"
-            }
-        ],
-        "name": "executeEggAuction",
-        "outputs": [],
-        "payable": true,
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "getAuctions",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            },
-            {
-                "name": "",
-                "type": "uint256[]"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "_id",
-                "type": "uint256"
-            }
-        ],
-        "name": "getAuction",
-        "outputs": [
-            {
-                "name": "id",
-                "type": "uint256"
-            },
-            {
-                "name": "seller",
-                "type": "address"
-            },
-            {
-                "name": "price",
-                "type": "uint256"
-            },
-            {
-                "name": "expiresAt",
-                "type": "uint256"
-            },
-            {
-                "name": "salesCount",
-                "type": "uint256"
-            },
-            {
-                "name": "eType",
+                "name": "_level",
                 "type": "uint8"
             }
         ],
-        "payable": false,
-        "stateMutability": "view",
+        "name": "exchangeEggToDDC",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_count",
+                "type": "uint256"
+            },
+            {
+                "name": "_eType",
+                "type": "uint8"
+            },
+            {
+                "name": "_level",
+                "type": "uint8"
+            }
+        ],
+        "name": "exchangeDDCToEgg",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
         "type": "function"
     }
 ]

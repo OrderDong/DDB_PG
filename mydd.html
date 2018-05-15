@@ -47,7 +47,7 @@
                 <div class="dd-nav-item1">
                     <p id="userName">啊啊23</p>
                     <p id="userETH" style="font-size: 12px;">0 ETH（以太坊）</p>
-                    <p id="userDDC" style="font-size: 12px;">300 DDC（蛋蛋币）</p>
+                    <p id="userDDC" style="font-size: 12px;">0 DDC（蛋蛋币）</p>
                 </div>
                 <div class="dd-nav-item2">
                     <button class="layui-btn layui-btn-primary layui-btn-radius">编辑</button>
@@ -61,12 +61,12 @@
                 <li>我的拍卖</li>
             </ul>
             <div class="layui-tab-content" style="height: 100px;">
-                <div class="layui-tab-item layui-show">
-                    <dl id="" class="layui-nav-dandan">
+                <div class="layui-tab-item layui-show" id="my_dandan">
+                    <!--<dl class="layui-nav-dandan">
                         <dt class="">
                             <img src="./img/dandan.png" class="dandan-img">
                             <div class="dandan-nav-item1">
-                                <p id="dandan_number">× 8</p>
+                                <p id="dandan_number">× 0</p>
                             </div>
                             <div class="dandan-nav-item2">
                                 <p>你的蛋蛋们正在安详的躺在蛋窝里~zzz</p>
@@ -77,7 +77,7 @@
                                 </button>
                             </div>
                         </dt>
-                    </dl>
+                    </dl>-->
                 </div>
                 <div class="layui-tab-item">
                     <div class="mydd-dd-baby">
@@ -132,7 +132,7 @@
                     </div>
                 </div>
                 <div class="layui-tab-item">
-                    <dl id="" class="layui-nav-dandan">
+                    <dl class="layui-nav-dandan">
                         <dt class="">
                             <img src="./img/dandan.png" class="dandan-img">
                             <div class="dandan-nav-item1">
@@ -187,18 +187,34 @@
         });
 
         salesAndPlayInstance.getEggList(account, function (error, result) {
+            console.log(result);
             for (var i = 0; i < result.length; i++) {
                 salesAndPlayInstance.getEggByType(result[i], function (error1, result1) {
-                    console.log(result1[3].toString());
-                    $("#dandan_number").html("× " + result1[1].toString());
+                    console.log(result1);
+                    var ddCount = result1[1].toString();
+                    var eType = result1[2].toString();
+                    var level = result1[3].toString();
+
+                    $("#my_dandan").append('<dl class="layui-nav-dandan">\n' +
+                        '                        <dt class="">\n' +
+                        '                            <img src="./img/dandan.png" class="dandan-img">\n' +
+                        '                            <div class="dandan-nav-item1">\n' +
+                        '                                <p id="dandan_number">× ' + ddCount + '</p>\n' +
+                        '                            </div>\n' +
+                        '                            <div class="dandan-nav-item2">\n' +
+                        '                                <p>你的蛋蛋们正在安详的躺在蛋窝里~zzz</p>\n' +
+                        '                                <br>\n' +
+                        '                                <button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-radius">买入</button>\n' +
+                        '                                <button onclick="sellDD(' + ddCount + ',' + eType + ',' + level + ')"\n' +
+                        '                                        class="layui-btn layui-btn-danger layui-btn-sm layui-btn-radius">出售\n' +
+                        '                                </button>\n' +
+                        '                            </div>\n' +
+                        '                        </dt>\n' +
+                        '                    </dl>');
 
                 });
             }
         });
-    }
-
-    function createEggAuction(price, expiresAt, count, eType, level) {
-
     }
 
     function canlcelDD() {
@@ -215,7 +231,11 @@
         });
     }
 
-    function sellDD() {
+    function sellDD(ddCount, _eType, _level) {
+        if(!parseInt(ddCount) > 0) {
+            layer.msg('没有足够的蛋蛋出售');
+            return;
+        }
         layer.open({
             title: '卖出蛋蛋',
             type: 1,
@@ -236,11 +256,23 @@
             , btn: ['确定出售', '取消']
             , yes: function (index, layero) {
                 var count = $("#dd_number").val();
-                var price = web3.toWei($("#dd_price").val(), 'ether');
+                var _price = $("#dd_price").val();
+                var price = web3.toWei(_price, 'ether');
                 var expiresAt = new Date().getTime() * 2;
-                var eType = "0";
-                var level = "0";
-                console.log(price);
+                var eType = _eType.toString();
+                var level = _level.toString();
+                if(!count) {
+                    layer.msg('请输入数量');
+                    return;
+                }
+                if(!_price) {
+                    layer.msg('请输入价格');
+                    return;
+                }
+                if(count > ddCount) {
+                    layer.msg('没有足够的蛋蛋');
+                    return;
+                }
 
                 salesAndPlayInstance.createEggAuction.sendTransaction(price, expiresAt, count, eType, function (error, result) {
 
