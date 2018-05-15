@@ -1,4 +1,4 @@
-var auctionAddr = "0x62bC678E3983A143DF60b280eC208F36aef6c0Fa";
+var auctionAddr = "0x13b5D6A5f08564013346B95923b17cF3602a2fbA";
 var tokenAddr = "0x4195E850A8504ef0Cc184Ac1FC22B5Ee5AF0321B";
 var actionInstance;
 
