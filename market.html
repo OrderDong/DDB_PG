@@ -148,17 +148,18 @@
                     actionInstance.getAuction(result[1][i].c[0], function (error, res) {
                         var id = parseInt(res[0].toString());
                         var seller = res[1].toString();
-                        var price = res[2].toString();
-                        var expiresAt = res[3].toString();
-                        var salesCount = res[4].toString();
-                        var eType = parseInt(res[5].toString());
+                        var sellerName = res[2].toString();
+                        var price = res[3].toString();
+                        var expiresAt = res[4].toString();
+                        var salesCount = res[5].toString();
+                        var eType = parseInt(res[6].toString());
                         var value = web3.fromWei(price, 'ether');
                         var name;
                         if (eType == 0) {
                             name = "白银蛋蛋";
                         }
                         $("#salesContent").append('<div class="market-dd-box"><div class="market-dd-user">' +
-                            '<img src="img/photo.png" class="market-dd-img"><p class="market-dd-name">' + userName + '</p></div>' +
+                            '<img src="img/photo.png" class="market-dd-img"><p class="market-dd-name">' + sellerName + '</p></div>' +
                             '<div class="market-dd-baby"><div class="market-baby-img"><img src="img/dandan.png"></div>' +
                             '<p class="">' + name + '</p><p class="">价格：' + value + 'eth × ' + salesCount + ' 个</p>' +
                             '<input type="hidden" name="_auctionId" value="' + id + '" />' +
