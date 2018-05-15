@@ -16,6 +16,7 @@ function initContractDanDan(danAbi){
 }
 
 function initContractAuction(salesAbi){
+	console.log("initContractAuction:"+auctionAddr);
 	var MyContract = web3.eth.contract(salesAbi);
 	actionInstance = MyContract.at(auctionAddr);
 	return actionInstance;
@@ -23,7 +24,6 @@ function initContractAuction(salesAbi){
 
 window.addEventListener('load', function() {
   if (typeof web3 !== 'undefined') {
-    console.warn("Using web3 detected from external source. If you find that your accounts don't appear or you have 0 MetaCoin, ensure you've configured that source properly. If using MetaMask, see the following link. Feel free to delete this warning. :) http://truffleframework.com/tutorials/truffle-and-metamask")
     console.log("into net web3");
     window.web3 = new Web3(web3.currentProvider);
 	  web3.version.getNetwork(function(err, netId){
