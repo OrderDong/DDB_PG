@@ -1,76 +1,77 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>蛋蛋的世界-蛋蛋市场</title>
-		<link rel="stylesheet" href="./layui/css/layui.css">
-		<link rel="stylesheet" href="./css/dd.css">
-		<script language="javascript" type="text/javascript" src="./js/salesAndPlay_abi.js"></script>
-		<script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	</head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>蛋蛋的世界-蛋蛋市场</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/dd.css">
+    <script language="javascript" type="text/javascript" src="./js/salesAndPlay_abi.js"></script>
+    <script language="javascript" type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
 
-	<body class="">
-		<div class="dandan_app">
-			<!--头部-->
-			<div class="layui-header">
-				<ul class="layui-nav">
-					<li class="layui-nav-item" lay-unselect="">
-						<a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="dd-nav-img">蛋蛋的世界</a>
-					</li>
-				</ul>
-				<ul class="layui-nav layui-layout-right">
-					<li class="layui-nav-item">
-						<a href="market.html">
-							市场
-						</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="battle.html">
-							战争
-						</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="mydd.html">
-							我的
-						</a>
-					</li>
-				</ul>
-			</div>
+<body class="">
+<div class="dandan_app">
+    <!--头部-->
+    <div class="layui-header">
+        <ul class="layui-nav">
+            <li class="layui-nav-item" lay-unselect="">
+                <a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="dd-nav-img">蛋蛋的世界</a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="market.html">
+                    市场
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="battle.html">
+                    战争
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="mydd.html">
+                    我的
+                </a>
+            </li>
+        </ul>
+    </div>
 
-			<!--主体-->
-			<div class="layui-container">
-				<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-					<ul class="layui-tab-title">
-						<li class="layui-this">蛋蛋の市场</li>
-						<li>买卖记录</li>
-					</ul>
-					<div class="layui-tab-content">
-						<div class="layui-tab-item layui-show">
-							<div class="market-ddfl">
-								<button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">白银蛋蛋</button>
-								<button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">黄金蛋蛋</button>
-								<button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">宝贝</button>
-							</div>
-							<div id="salesContent">
-								<!--<div class="market-dd-box">
-									<div class="market-dd-user">
-										<img src="http://t.cn/RCzsdCq" class="market-dd-img">
-										<p class="market-dd-name">superna</p>
-									</div>
-									<div class="market-dd-baby">
-										<div class="market-baby-img"><img src="http://t.cn/RCzsdCq"></div>
-										<p class="">宝贝名称</p>
-										<p class="">价格：0.03ETH × 3 个</p>
-										<button onclick="buyDD()" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">买入</button>
-									</div>
-								</div>-->
-							</div>
-						</div>
-						<div class="layui-tab-item">
-							<dl class="record-nav">
-								<dt class="record-nav1">
+    <!--主体-->
+    <div class="layui-container">
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">蛋蛋の市场</li>
+                <li>买卖记录</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="market-ddfl">
+                        <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">白银蛋蛋</button>
+                        <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">黄金蛋蛋</button>
+                        <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">宝贝</button>
+                    </div>
+                    <div id="salesContent">
+                        <!--<div class="market-dd-box">
+                            <div class="market-dd-user">
+                                <img src="http://t.cn/RCzsdCq" class="market-dd-img">
+                                <p class="market-dd-name">superna</p>
+                            </div>
+                            <div class="market-dd-baby">
+                                <div class="market-baby-img"><img src="http://t.cn/RCzsdCq"></div>
+                                <p class="">宝贝名称</p>
+                                <p class="">价格：0.03ETH × 3 个</p>
+                                <button onclick="buyDD()" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">买入</button>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <dl class="record-nav">
+                        <dt class="record-nav1">
                             <div class="record-nav-item1">
                                 2颗白银蛋蛋
                             </div>
@@ -78,7 +79,7 @@
                                 卖出
                             </div>
                         </dt>
-								<dt class="record-nav2">
+                        <dt class="record-nav2">
                             <div class="record-nav-item1">
                                 0.024 ETH 每颗
                             </div>
@@ -86,9 +87,9 @@
                                 2018-05-02 19:21:00
                             </div>
                         </dt>
-							</dl>
-							<dl class="record-nav">
-								<dt class="record-nav1">
+                    </dl>
+                    <dl class="record-nav">
+                        <dt class="record-nav1">
                             <div class="record-nav-item1">
                                 2颗白银蛋蛋
                             </div>
@@ -96,7 +97,7 @@
                                 卖出
                             </div>
                         </dt>
-								<dt class="record-nav2">
+                        <dt class="record-nav2">
                             <div class="record-nav-item1">
                                 0.024 ETH 每颗
                             </div>
@@ -104,9 +105,9 @@
                                 2018-05-02 19:21:00
                             </div>
                         </dt>
-							</dl>
-							<dl class="record-nav">
-								<dt class="record-nav1">
+                    </dl>
+                    <dl class="record-nav">
+                        <dt class="record-nav1">
                             <div class="record-nav-item1">
                                 2颗白银蛋蛋
                             </div>
@@ -114,7 +115,7 @@
                                 卖出
                             </div>
                         </dt>
-								<dt class="record-nav2">
+                        <dt class="record-nav2">
                             <div class="record-nav-item1">
                                 0.024 ETH 每颗
                             </div>
@@ -122,107 +123,121 @@
                                 2018-05-02 19:21:00
                             </div>
                         </dt>
-							</dl>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-		<script src="./layui/layui.js"></script>
-		<script>
-			layui.use(['layer', 'form', 'element'], function() {
-				var layer = layui.layer,
-					element = layui.element,
-					form = layui.form;
-			});
-		</script>
-		<script language="javascript" type="text/javascript" src="js/common.js"></script>
-		<script>
-			var actionInstance = initContractAuction(SalesAndPlayABI);
-			var account = web3.eth.defaultAccount;
-			var userName = localStorage.getItem("userName");
-			function getAuctionList() {
-				//console.log(actionInstance);
-				actionInstance.getAuctions(function(error, result) {
-					if(result[0].c[0] > 0){
-						for(i = 0; i < result[1].length; i++) {
-							actionInstance.getAuction(result[1][i].c[0], function(error, res) {
-								var id = parseInt(res[0].toString());
-								var seller = res[1].toString();
-								var price = res[2].toString();
-								var expiresAt = res[3].toString();
-								var salesCount = res[4].toString();
-								var eType = parseInt(res[5].toString());
-								var value = web3.fromWei(price, 'ether');
-								var name;
-								if(eType == 0){
-									name = "白银蛋蛋";
-								}
-								$("#salesContent").append('<div class="market-dd-box"><div class="market-dd-user">'+
-											'<img src="img/photo.png" class="market-dd-img"><p class="market-dd-name">'+userName+'</p></div>'+
-											'<div class="market-dd-baby"><div class="market-baby-img"><img src="img/dandan.png"></div>'+
-											'<p class="">'+name+'</p><p class="">价格：'+value+'eth × '+salesCount+' 个</p>'+
-											'<input type="hidden" name="_auctionId" value="'+id+'" />'+
-											'<input type="hidden" name="_count" value="'+salesCount+'" />'+
-											'<input type="hidden" name="_price" value="'+value+'" />'+
-											'<button onclick="buyDD(this)" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">买入</button></div></div>');
-							});
-						}
-					}
-				});
-			}
-			getAuctionList();
-			
-			function buyDD(obj) {
-				var _auctionId = $(obj).parent().find("input[name='_auctionId']").val();
-				var _count = $(obj).parent().find("input[name='_count']").val();
-				var _price = $(obj).parent().find("input[name='_price']").val();
-				layer.open({
-					title: '买入宝贝',
-					type: 1,
-					skin: 'layui-layer-demo', //样式类名
-					closeBtn: 1, //不显示关闭按钮
-					anim: 2,
-					area: ['315px', '240px'],
-					shadeClose: true, //开启遮罩关闭
-					content: '<div class="market-modal">' +
-						'<div class="market-modal-img"><img src="http://t.cn/RCzsdCq"></div>' +
-						'  <div class="market-modal-p"><p>价格：'+_price+'ETH</p>' +
-						'    <p>数量：'+_count+'个</p>' +
-						'    <p>总价：'+ _price*_count+'ETH</p>' +
-						'  </div></div>' +
-						'<div class="market-modal-submit"><label class="layui-form-label1">买入数量：</label>' +
-						'<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">-</button>' +
-						'<input type="text" name="title" class="layui-input1" id="buyCount">' +
-						'<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">+</button>' +
-						'<button class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius" onclick="buyEx('+_auctionId+','+_count+','+_price+')">买入</button></div>'
-				});
-			}
-			function buyEx(_auctionId,_count,_price){
-				var byCount =$("#buyCount").val();
-				if(byCount <=0 || byCount >_count){
-					alert("数量不正确！");
-				}
-				console.log(_auctionId+","+byCount);
-				/*actionInstance.executeEggAuction(_auctionId,byCount,function(error, result) {
-					if(err != null) {
-						alert("There was an error.");
-						alert(err);
-						return;
-					}
-					alert("success");
-				});
-				*/
-				actionInstance.executeEggAuction(_auctionId,byCount).send({from: web3.eth.defaultAccount, value: web3.toWei(_price)});
-				actionInstance.events.AuctionSuccessful().on("data", function(event) {
-				  var zombie = event.returnValues;
-				  console.log("购买成功！", zombie._auctionId, zombie.price, zombie._count);
-				}).on('error', console.error);
-			}
-			
+<script src="./layui/layui.js"></script>
+<script>
+    layui.use(['layer', 'form', 'element'], function () {
+        var layer = layui.layer,
+            element = layui.element,
+            form = layui.form;
+    });
+</script>
+<script language="javascript" type="text/javascript" src="js/common.js"></script>
+<script>
+    var actionInstance = initContractAuction(SalesAndPlayABI);
+    var account = web3.eth.defaultAccount;
+    var userName = localStorage.getItem("userName");
 
-		</script>
-	</body>
+    function getAuctionList() {
+        //console.log(actionInstance);
+        actionInstance.getAuctions(function (error, result) {
+            if (result[0].c[0] > 0) {
+                for (i = 0; i < result[1].length; i++) {
+                    actionInstance.getAuction(result[1][i].c[0], function (error, res) {
+                        var id = parseInt(res[0].toString());
+                        var seller = res[1].toString();
+                        var price = res[2].toString();
+                        var expiresAt = res[3].toString();
+                        var salesCount = res[4].toString();
+                        var eType = parseInt(res[5].toString());
+                        var value = web3.fromWei(price, 'ether');
+                        var name;
+                        if (eType == 0) {
+                            name = "白银蛋蛋";
+                        }
+                        $("#salesContent").append('<div class="market-dd-box"><div class="market-dd-user">' +
+                            '<img src="img/photo.png" class="market-dd-img"><p class="market-dd-name">' + userName + '</p></div>' +
+                            '<div class="market-dd-baby"><div class="market-baby-img"><img src="img/dandan.png"></div>' +
+                            '<p class="">' + name + '</p><p class="">价格：' + value + 'eth × ' + salesCount + ' 个</p>' +
+                            '<input type="hidden" name="_auctionId" value="' + id + '" />' +
+                            '<input type="hidden" name="_count" value="' + salesCount + '" />' +
+                            '<input type="hidden" name="_price" value="' + value + '" />' +
+                            '<button onclick="buyDD(this)" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">买入</button></div></div>');
+                    });
+                }
+            }
+        });
+    }
+
+    getAuctionList();
+
+    function buyDD(obj) {
+        var _auctionId = $(obj).parent().find("input[name='_auctionId']").val();
+        var _count = $(obj).parent().find("input[name='_count']").val();
+        var _price = $(obj).parent().find("input[name='_price']").val();
+        layer.open({
+            title: '买入宝贝',
+            type: 1,
+            skin: 'layui-layer-demo', //样式类名
+            closeBtn: 1, //不显示关闭按钮
+            anim: 2,
+            area: ['315px', '240px'],
+            shadeClose: true, //开启遮罩关闭
+            content: '<div class="market-modal">' +
+            '<div class="market-modal-img"><img src="http://t.cn/RCzsdCq"></div>' +
+            '  <div class="market-modal-p"><p>价格：' + _price + 'ETH</p>' +
+            '    <p>数量：' + _count + '个</p>' +
+            '    <p>总价：' + _price * _count + 'ETH</p>' +
+            '  </div></div>' +
+            '<div class="market-modal-submit"><label class="layui-form-label1">买入数量：</label>' +
+            '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">-</button>' +
+            '<input type="text" name="title" class="layui-input1" id="buyCount">' +
+            '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">+</button>' +
+            '<button class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius" onclick="buyEx(' + _auctionId + ',' + _count + ',' + _price + ')">买入</button></div>'
+        });
+    }
+
+    function buyEx(_auctionId, _count, _price) {
+        var byCount = $("#buyCount").val();
+        if (byCount <= 0 || byCount > _count) {
+            alert("数量不正确！");
+        }
+        console.log(_auctionId + "," + byCount);
+        /*actionInstance.executeEggAuction(_auctionId,byCount,function(error, result) {
+            if(err != null) {
+                alert("There was an error.");
+                alert(err);
+                return;
+            }
+            alert("success");
+        });
+        */
+//				actionInstance.executeEggAuction(_auctionId,byCount).send({from: web3.eth.defaultAccount, value: web3.toWei(_price)});
+        actionInstance.executeEggAuction.sendTransaction(_auctionId, byCount, {
+            from: web3.eth.defaultAccount,
+            value: web3.toWei(_price*byCount)
+        }, function (error, result) {
+
+        });
+//        actionInstance.events.AuctionSuccessful().on("data", function (event) {
+//            var zombie = event.returnValues;
+//            console.log("购买成功！", zombie._auctionId, zombie.price, zombie._count);
+//        }).on('error', console.error);
+
+//        var web3Infura = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
+//        var czEvents = new web3Infura.eth.Contract(SalesAndPlayABI, "0xF59b32aB210cC993AF82551B90eEF3AFcec47d47");
+
+        var events = actionInstance.allEvents({fromBlock: 0, toBlock: 'latest'});
+    }
+
+
+</script>
+</body>
 
 </html>

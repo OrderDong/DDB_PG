@@ -236,11 +236,11 @@
             , btn: ['确定出售', '取消']
             , yes: function (index, layero) {
                 var count = $("#dd_number").val();
-                var price = $("#dd_price").val();
+                var price = web3.toWei($("#dd_price").val(), 'ether');
                 var expiresAt = new Date().getTime() * 2;
                 var eType = "0";
                 var level = "0";
-                console.log(expiresAt);
+                console.log(price);
 
                 salesAndPlayInstance.createEggAuction.sendTransaction(price, expiresAt, count, eType, function (error, result) {
 
