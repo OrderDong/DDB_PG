@@ -829,8 +829,8 @@ var SalesAndPlayABI = [
         ],
         "name": "exchangeEggToDDC",
         "outputs": [],
-        "payable": true,
-        "stateMutability": "payable",
+        "payable": false,
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -851,8 +851,9 @@ var SalesAndPlayABI = [
         ],
         "name": "exchangeDDCToEgg",
         "outputs": [],
-        "payable": true,
-        "stateMutability": "payable",
+        "payable": false,
+        "stateMutability": "nonpayable",
         "type": "function"
     }
 ]
+

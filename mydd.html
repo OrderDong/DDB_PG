@@ -155,6 +155,7 @@
 
 <script src="./layui/layui.js"></script>
 <script type="text/javascript" src="js/DanDanCoin_abi.js"></script>
+<script type="text/javascript" src="js/temp730token_abi.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script>
     //一般直接写在一个js文件中
@@ -170,6 +171,26 @@
 
     var salesAndPlayInstance = initContractAuction(SalesAndPlayABI);
     var danDanCoinInstance = initContractDanDan(DanDanABI);
+    var temp730tokenAddr = "0xfc22Ff07E85dF92c5471F84f3700Fa88D856A1A6";
+    var temp730Instance = initContractTemp(temp730tokenAbi);
+
+    function initContractTemp(abi){
+        console.log("initContractTemp730:"+temp730tokenAddr);
+        var MyContract = web3.eth.contract(abi);
+        actionInstance = MyContract.at(temp730tokenAddr);
+        return actionInstance;
+    }
+
+//    temp730Instance.payInfo.sendTransaction("2", {
+//        from: web3.eth.defaultAccount,
+//        value: web3.toWei(1,"ether")
+//    }, function (err, res) {
+//        console.log(res);
+//    });
+    //换成蛋蛋币
+//    temp730Instance.exchangeEggToDDC.sendTransaction("2", account, function (err, res) {
+//        console.log(res);
+//    });
 
 
     getMyInfo();
@@ -187,31 +208,40 @@
         });
 
         salesAndPlayInstance.getEggList(account, function (error, result) {
-            console.log(result);
             for (var i = 0; i < result.length; i++) {
+                var accIndex = result[i];
                 salesAndPlayInstance.getEggByType(result[i], function (error1, result1) {
                     console.log(result1);
                     var ddCount = result1[1].toString();
                     var eType = result1[2].toString();
                     var level = result1[3].toString();
 
-                    $("#my_dandan").append('<dl class="layui-nav-dandan">\n' +
-                        '                        <dt class="">\n' +
-                        '                            <img src="./img/dandan.png" class="dandan-img">\n' +
-                        '                            <div class="dandan-nav-item1">\n' +
-                        '                                <p id="dandan_number">× ' + ddCount + '</p>\n' +
-                        '                            </div>\n' +
-                        '                            <div class="dandan-nav-item2">\n' +
-                        '                                <p>你的蛋蛋们正在安详的躺在蛋窝里~zzz</p>\n' +
-                        '                                <br>\n' +
-                        '                                <button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-radius">买入</button>\n' +
-                        '                                <button onclick="sellDD(' + ddCount + ',' + eType + ',' + level + ')"\n' +
-                        '                                        class="layui-btn layui-btn-danger layui-btn-sm layui-btn-radius">出售\n' +
-                        '                                </button>\n' +
-                        '                            </div>\n' +
-                        '                        </dt>\n' +
-                        '                    </dl>');
 
+                    console.log("----" + accIndex);
+
+
+
+                    //拍卖的总蛋蛋数量
+                    salesAndPlayInstance.getAuctionByType(eType, {from: account}, function (err, res) {
+//                        console.log("====="+res);
+                        ddCount = ddCount - parseInt(res);
+                        $("#my_dandan").append('<dl class="layui-nav-dandan">\n' +
+                            '                        <dt class="">\n' +
+                            '                            <img src="./img/dandan.png" class="dandan-img">\n' +
+                            '                            <div class="dandan-nav-item1">\n' +
+                            '                                <p id="dandan_number">× ' + ddCount + '</p>\n' +
+                            '                            </div>\n' +
+                            '                            <div class="dandan-nav-item2">\n' +
+                            '                                <p>你的蛋蛋们正在安详的躺在蛋窝里~zzz</p>\n' +
+                            '                                <br>\n' +
+                            '                                <button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-radius">买入</button>\n' +
+                            '                                <button onclick="sellDD(' + ddCount + ',' + eType + ',' + level + ')"\n' +
+                            '                                        class="layui-btn layui-btn-danger layui-btn-sm layui-btn-radius">出售\n' +
+                            '                                </button>\n' +
+                            '                            </div>\n' +
+                            '                        </dt>\n' +
+                            '                    </dl>');
+                    });
                 });
             }
         });
@@ -232,7 +262,7 @@
     }
 
     function sellDD(ddCount, _eType, _level) {
-        if(!parseInt(ddCount) > 0) {
+        if (!parseInt(ddCount) > 0) {
             layer.msg('没有足够的蛋蛋出售');
             return;
         }
@@ -261,20 +291,21 @@
                 var expiresAt = new Date().getTime() * 2;
                 var eType = _eType.toString();
                 var level = _level.toString();
-                if(!count) {
+                var userName = localStorage.getItem("userName");
+                if (!count) {
                     layer.msg('请输入数量');
                     return;
                 }
-                if(!_price) {
+                if (!_price) {
                     layer.msg('请输入价格');
                     return;
                 }
-                if(count > ddCount) {
+                if (count > ddCount) {
                     layer.msg('没有足够的蛋蛋');
                     return;
                 }
 
-                salesAndPlayInstance.createEggAuction.sendTransaction(price, expiresAt, count, eType, function (error, result) {
+                salesAndPlayInstance.createEggAuction.sendTransaction(price, expiresAt, count, eType, userName, function (error, result) {
 
                 });
             }

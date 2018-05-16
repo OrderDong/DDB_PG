@@ -1,5 +1,6 @@
-var auctionAddr = "0x13b5D6A5f08564013346B95923b17cF3602a2fbA";
+var auctionAddr = "0x3Dd8EE7E706Ce70c976B79193F04261Cb1D70767";
 var tokenAddr = "0x4195E850A8504ef0Cc184Ac1FC22B5Ee5AF0321B";
+var temp730tokenAddr = "0xfc22Ff07E85dF92c5471F84f3700Fa88D856A1A6";
 var actionInstance;
 
 var account = web3.eth.accounts[0];
@@ -20,6 +21,13 @@ function initContractAuction(salesAbi){
 	var MyContract = web3.eth.contract(salesAbi);
 	actionInstance = MyContract.at(auctionAddr);
 	return actionInstance;
+}
+
+function initContractTemp(abi){
+    console.log("initContractTemp730:"+temp730tokenAddr);
+    var MyContract = web3.eth.contract(abi);
+    actionInstance = MyContract.at(temp730tokenAddr);
+    return actionInstance;
 }
 
 window.addEventListener('load', function() {
