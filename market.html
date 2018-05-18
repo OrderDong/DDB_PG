@@ -128,6 +128,8 @@
         }
         var totalPrice = web3.fromWei(parseInt(args.totalPrice.toString())/parseInt(salesCount), 'ether');
 
+        var time = (new Date(parseInt(args.time)*1000)).Format("yyyy-MM-dd hh:mm:ss");
+
         $("#salesRecord").append('' +
             '    <dl class="record-nav">\n' +
             '        <dt class="record-nav1">\n' +
@@ -140,8 +142,7 @@
             '        <div class="record-nav-item1">\n' + totalPrice +
             '         ETH 每颗\n' +
             '    </div>\n' +
-            '    <div class="record-nav-item2">\n' +
-            '        2018-05-02 19:21:00\n' +
+            '    <div class="record-nav-item2">\n' + time +
             '    </div>\n' +
             '    </dt>\n' +
             '    </dl>');
