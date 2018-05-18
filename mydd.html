@@ -171,27 +171,6 @@
 
     var salesAndPlayInstance = initContractAuction(SalesAndPlayABI);
     var danDanCoinInstance = initContractDanDan(DanDanABI);
-    var temp730tokenAddr = "0xfc22Ff07E85dF92c5471F84f3700Fa88D856A1A6";
-    var temp730Instance = initContractTemp(temp730tokenAbi);
-
-    function initContractTemp(abi){
-        console.log("initContractTemp730:"+temp730tokenAddr);
-        var MyContract = web3.eth.contract(abi);
-        actionInstance = MyContract.at(temp730tokenAddr);
-        return actionInstance;
-    }
-
-//    temp730Instance.payInfo.sendTransaction("2", {
-//        from: web3.eth.defaultAccount,
-//        value: web3.toWei(1,"ether")
-//    }, function (err, res) {
-//        console.log(res);
-//    });
-    //换成蛋蛋币
-//    temp730Instance.exchangeEggToDDC.sendTransaction("2", account, function (err, res) {
-//        console.log(res);
-//    });
-
 
     getMyInfo();
 
