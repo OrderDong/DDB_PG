@@ -1,6 +1,7 @@
 var auctionAddr = "0x3Dd8EE7E706Ce70c976B79193F04261Cb1D70767";
 var tokenAddr = "0x4195E850A8504ef0Cc184Ac1FC22B5Ee5AF0321B";
-var temp730tokenAddr = "0xfc22Ff07E85dF92c5471F84f3700Fa88D856A1A6";
+var eggCardAddr = "0xe007E924e6E3641AB9CE0b8a4bf0c9F2F59BB83E";
+var cardAuctionAddr = "0x3937431d046C81956CCDF106506A2c170A114d1F";
 var actionInstance;
 
 var account = web3.eth.accounts[0];
@@ -9,24 +10,31 @@ var accountInterval = setInterval(function() {
     account = web3.eth.accounts[0];
   }
 }, 100);
-
+//ERC20合约
 function initContractDanDan(danAbi){
 	var MyContract = web3.eth.contract(danAbi);
 	actionInstance = MyContract.at(tokenAddr);
 	return actionInstance;
 }
-
+//蛋蛋销售合约
 function initContractAuction(salesAbi){
 	console.log("initContractAuction:"+auctionAddr);
 	var MyContract = web3.eth.contract(salesAbi);
 	actionInstance = MyContract.at(auctionAddr);
 	return actionInstance;
 }
-
-function initContractTemp(abi){
-    console.log("initContractTemp730:"+temp730tokenAddr);
+//卡牌721合约
+function initContractEggCard(abi){
+    console.log("initContractEggCard:"+eggCardAddr);
     var MyContract = web3.eth.contract(abi);
-    actionInstance = MyContract.at(temp730tokenAddr);
+    actionInstance = MyContract.at(eggCardAddr);
+    return actionInstance;
+}
+//卡牌拍卖合约
+function initContractCardAuction(abi){
+    console.log("initContractCardAuction:"+cardAuctionAddr);
+    var MyContract = web3.eth.contract(abi);
+    actionInstance = MyContract.at(cardAuctionAddr);
     return actionInstance;
 }
 
