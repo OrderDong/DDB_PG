@@ -339,6 +339,7 @@ contract EggAuction is MarketUse {
     function getAuctionByType(uint8 _eType) view external returns (uint256) {
         return _getAuctionByType(_eType,msg.sender);
     }
+    //TODO  需要测试
     function withdrawBalance(uint256 amount) external onlyOwner {
         uint256 balance = address(this).balance;
         if (balance > amount) {
