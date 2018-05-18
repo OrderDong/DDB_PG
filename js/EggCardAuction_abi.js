@@ -1,4 +1,4 @@
-var CardAuction = [
+var eggCardAuction = [
 	{
 		"anonymous": false,
 		"inputs": [

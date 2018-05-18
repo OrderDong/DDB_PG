@@ -7,7 +7,8 @@
     <title>蛋蛋的世界-蛋蛋市场</title>
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link rel="stylesheet" href="./css/dd.css">
-    <script language="javascript" type="text/javascript" src="./js/salesAndPlay_abi.js"></script>
+    <script language="javascript" type="text/javascript" src="js/EggAuction_abi.js"></script>
+    <script language="javascript" type="text/javascript" src="js/EggCardAuction_abi.js"></script>
     <script language="javascript" type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -52,7 +53,7 @@
                     <div class="market-ddfl">
                         <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">白银蛋蛋</button>
                         <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">黄金蛋蛋</button>
-                        <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm">宝贝</button>
+                        <button class="layui-btn layui-btn-radius layui-btn-primary layui-btn-sm" onclick="changeCard();">宝贝</button>
                     </div>
                     <div id="salesContent">
                         <!--<div class="market-dd-box">
@@ -226,12 +227,10 @@
 //            var zombie = event.returnValues;
 //            console.log("购买成功！", zombie._auctionId, zombie.price, zombie._count);
 //        }).on('error', console.error);
-
-
-
-
     }
-
+	function changeCard(){
+		
+	}
 
 </script>
 </body>
