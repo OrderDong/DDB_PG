@@ -131,7 +131,7 @@ contract EggCardMarket is Ownable, Pausable {
         ownerCutFee = _ownerCutFee;
         emit ChangedOwnerCut(ownerCutFee);
     }
-    function getAuctionIndex(uint256 _tokenId) internal view returns (uint256){
+    function _getAuctionIndexByToken(uint256 _tokenId) internal view returns (uint256){
         uint256 i;
         for(i=0; i<auctionIndexs.length; i++){
             if(auctionIndexs[i] == _tokenId){
@@ -183,7 +183,7 @@ contract EggCardMarket is Ownable, Pausable {
         address auctionSeller = auctionByTokenId[tokenId].seller;
         delete auctionByTokenId[tokenId];
         ownershipAuctionCount[msg.sender] = ownershipAuctionCount[msg.sender].sub(1);
-        uint256 index = getAuctionIndex(tokenId);
+        uint256 index = _getAuctionIndexByToken(tokenId);
         auctionIndexs[index] = auctionIndexs[auctionIndexs.length.sub(1)];
         delete auctionIndexs[auctionIndexs.length.sub(1)];
         emit CardAuctionCancelled(auctionId, tokenId, auctionSeller,now);
@@ -226,7 +226,7 @@ contract EggCardMarket is Ownable, Pausable {
         uint256 auctionId = auctionByTokenId[tokenId].id;
         delete auctionByTokenId[tokenId];
         ownershipAuctionCount[msg.sender] = ownershipAuctionCount[msg.sender].sub(1);
-        uint256 index = getAuctionIndex(tokenId);
+        uint256 index = _getAuctionIndexByToken(tokenId);
         auctionIndexs[index] = auctionIndexs[auctionIndexs.length.sub(1)];
         delete auctionIndexs[auctionIndexs.length.sub(1)];
         emit CardAuctionSuccessful(auctionId, tokenId, seller, price, msg.sender,now);
