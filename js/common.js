@@ -1,7 +1,7 @@
 var auctionAddr = "0x3Dd8EE7E706Ce70c976B79193F04261Cb1D70767";
 var tokenAddr = "0x4195E850A8504ef0Cc184Ac1FC22B5Ee5AF0321B";
 var eggCardAddr = "0xe007E924e6E3641AB9CE0b8a4bf0c9F2F59BB83E";
-var cardAuctionAddr = "0x3937431d046C81956CCDF106506A2c170A114d1F";
+var cardAuctionAddr = "0x98A4D97c897C5FF0FD3d7aFD1547992D5aa88350";
 var actionInstance;
 
 var account = web3.eth.accounts[0];
