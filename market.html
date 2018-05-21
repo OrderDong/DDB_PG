@@ -270,8 +270,8 @@
 	                        '<div class="market-dd-baby"><div class="market-baby-img"><img src="img/jinniu.png"></div>' +
 	                        '<p class="">' + name + '</p><p class="">价格：' + value + ' DDC × 1 个</p>' +
 	                        '<input type="hidden" name="_tokenId" value="' + tokenId + '" />' +
-	                        '<input type="hidden" name="_price" value="' + value + '" />' +
-	                        '<button onclick="buyDD(this)" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">买入</button></div></div>');
+	                        '<input type="hidden" name="_price" value="' + price + '" />' +
+	                        '<button onclick="buyCard(this)" class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs">买入</button></div></div>');
                     });
                    
 
@@ -279,7 +279,42 @@
             }
         });
 	}
-
+	
+	function buyCard(obj) {
+        var _tokenId = $(obj).parent().find("input[name='_tokenId']").val();
+        var _price = $(obj).parent().find("input[name='_price']").val();
+        var value = web3.fromWei(_price, 'ether');
+        layer.open({
+            title: '买入宝贝',
+            type: 1,
+            skin: 'layui-layer-demo', //样式类名
+            closeBtn: 1, //不显示关闭按钮
+            anim: 2,
+            area: ['315px', '240px'],
+            shadeClose: true, //开启遮罩关闭
+            content: '<div class="market-modal">' +
+            '<div class="market-modal-img"><img src="img/jinniu1.png"></div>' +
+            '  <div class="market-modal-p"><p>价格：' + value + ' DDC</p>' +
+            '    <p>数量：1 个</p>' +
+            '    <p>总价：' + value + ' DDC</p>' +
+            '  </div></div>' +
+            '<div class="market-modal-submit"><label class="layui-form-label1">买入数量：</label>' +
+            '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">-</button>' +
+            '<input type="text" readonly name="title" class="layui-input1" id="buyCount" value="1">' +
+            '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">+</button>' +
+            '<button class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius" onclick="buyCardEx(' + _tokenId + ',' + _price + ')">买入</button></div>'
+        });
+    }
+	
+	function buyCardEx(_tokenId,_price) {
+        console.log(_tokenId + "," + _price);
+        eggAuctionInstance.executeCardAuction.sendTransaction(_tokenId, _price, function (error, result) {
+			if(error != null){
+				console.log(error);
+			}
+			console.log(result);
+        });
+    }
 </script>
 </body>
 
