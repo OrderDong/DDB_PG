@@ -116,7 +116,11 @@
     
     var account = web3.eth.defaultAccount;
     var userName = localStorage.getItem("userName");
-
+	//var eggCardInstance = initContractEggCard(EggCardABI);
+	/*eggCardInstance.approve.sendTransaction("0x7A1b2716c3bbb411877CC782fA4Bfdf80538589c", "0",{from:account}, function (err, res) {
+	    console.log(res);
+	});*/
+	
     /*var myEvent = actionInstance.AuctionSuccessful({winner: account}, {fromBlock: 0, toBlock: 'latest'});
     myEvent.watch(function(error, result){
         var args = result.args;
@@ -315,6 +319,7 @@
 			console.log(result);
         });
     }
+	
 </script>
 </body>
 
