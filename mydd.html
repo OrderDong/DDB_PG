@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link rel="stylesheet" href="./css/dd.css">
     <script language="javascript" type="text/javascript" src="./js/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="./js/EggAuction_abi.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/EggAuctionWar_abi.js"></script>
     <script language="javascript" type="text/javascript" src="./js/EggCard_abi.js"></script>
     <script language="javascript" type="text/javascript" src="./js/EggCardAuction_abi.js"></script>
 </head>
@@ -62,28 +62,28 @@
         </dl>
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
             <ul class="layui-tab-title">
-                <li class="layui-this">我的蛋蛋</li>
+                <li class="layui-this">我的蛋蛋币</li>
                 <li>我的宝贝</li>
                 <li>我的拍卖</li>
             </ul>
             <div class="layui-tab-content" style="height: 100px;">
                 <div class="layui-tab-item layui-show" id="my_dandan">
-                    <!--<dl class="layui-nav-dandan">
+                    <dl class="layui-nav-dandan">
                         <dt class="">
                             <img src="./img/dandan.png" class="dandan-img">
                             <div class="dandan-nav-item1">
-                                <p id="dandan_number">× 0</p>
+                                <p id="dandan_number"></p>
                             </div>
                             <div class="dandan-nav-item2">
-                                <p>你的蛋蛋们正在安详的躺在蛋窝里~zzz</p>
+                                <p>你的蛋蛋币正在安详的躺在蛋窝里~zzz</p>
                                 <br>
                                 <button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-radius">买入</button>
-                                <button onclick="sellDD()"
+                                <button onclick="sellDDC()"
                                         class="layui-btn layui-btn-danger layui-btn-sm layui-btn-radius">出售
                                 </button>
                             </div>
                         </dt>
-                    </dl>-->
+                    </dl>
                 </div>
                 <div class="layui-tab-item">
                     <div class="mydd-dd-baby" id="eggCardAuction">
@@ -113,12 +113,12 @@
                         </div>-->
                     </div>
                 </div>
-                <div class="layui-tab-item">
-                    <dl class="layui-nav-dandan">
+                <div class="layui-tab-item" id="ddcAuction">
+                    <!--<dl class="layui-nav-dandan">
                         <dt class="">
                             <img src="./img/dandan.png" class="dandan-img">
                             <div class="dandan-nav-item1">
-                                <p>× 5</p>
+                                <p>× 0</p>
                             </div>
                             <div class="dandan-nav-item2">
                                 <p>价格：0.023ETH</p>
@@ -128,7 +128,7 @@
                                 </button>
                             </div>
                         </dt>
-                    </dl>
+                    </dl>-->
                 </div>
             </div>
         </div>
@@ -147,6 +147,7 @@
             form = layui.form;
 
 //				layer.msg('Hello World');
+//        sellDDC();
     });
 
     $("#userName").html(localStorage.getItem("userName"));
@@ -154,28 +155,18 @@
     var salesAndPlayInstance = initContractAuction(SalesAndPlayABI);
     var danDanCoinInstance = initContractDanDan(DanDanABI);
 
+    console.log(web3.toWei(1, 'ether'));
+    //    //授权
+//    danDanCoinInstance.approve.sendTransaction(auctionAddr, web3.toWei(10000, 'ether'), function (err, res) {
+//        console.log(res);
+//    });
 
-    //换成蛋蛋币
-    //    temp730Instance.exchangeEggToDDC.sendTransaction("2", account,{from: account}, function (err, res) {
-    //        console.log(res);
-    //    });
-
-    //授权
-    //    danDanCoinInstance.approve.sendTransaction("0x57d1FaB22f489aF3552b0690Abb0F14702067880","1000",{from: account}, function (err, res) {
-    //        console.log(res);
-    //    });
-
-    //    danDanCoinInstance.allowance(account, "0x57d1FaB22f489aF3552b0690Abb0F14702067880", {from: account}, function (err, res) {
-    //        console.log(res);
-    //    });
-
-    //蛋蛋币换蛋蛋
-    //    temp730Instance.exchangeDDCToEgg.sendTransaction("100", {from: account}, function (err, res) {
-    //        console.log(res);
-    //    });
-
+    danDanCoinInstance.allowance(account, auctionAddr, function (err, res) {
+        console.log(res.toString());
+    });
 
     getMyInfo();
+
 
     function getMyInfo() {
         web3.eth.getBalance(account, function (error, result) {
@@ -184,51 +175,47 @@
         });
 
         danDanCoinInstance.balanceOf(account, function (error, result) {
-            var resWei = web3.toWei(result.toString(), 'wei');
-            var resEther = web3.fromWei(resWei, 'ether');
+            var resEther = web3.fromWei(result.toString(), 'ether');
             $("#userDDC").html(resEther + " DDC（蛋蛋币）");
         });
 
-        salesAndPlayInstance.getEggList(account, function (error, result) {
+        salesAndPlayInstance.getAuctionsByOwner(account, function (error, result) {
+            console.log(result);
             for (var i = 0; i < result.length; i++) {
-                var accIndex = result[i];
-                salesAndPlayInstance.getEggByType(result[i], function (error1, result1) {
-//                    console.log(result1);
-                    var ddCount = result1[1].toString();
-                    var eType = result1[2].toString();
-                    var level = result1[3].toString();
+                var id = result[i].toString();
+                salesAndPlayInstance.getAuction(id, function (err, res) {
+                    console.log(res);
+                    var id = res[0].toString();
+                    var seller = res[1].toString();
+                    var name = res[2].toString();
+                    var price = web3.fromWei(res[3].toString(), 'ether');
+                    var expiresAt = res[4].toString();
+                    var salesCount = res[5].toString();
 
-
-//                    console.log("----" + accIndex);
-
-
-                    //拍卖的总蛋蛋数量
-                    salesAndPlayInstance.getAuctionByType(eType, {from: account}, function (err, res) {
-//                        console.log("====="+res);
-                        ddCount = ddCount - parseInt(res);
-                        $("#my_dandan").append('<dl class="layui-nav-dandan">\n' +
-                            '                        <dt class="">\n' +
-                            '                            <img src="./img/dandan.png" class="dandan-img">\n' +
-                            '                            <div class="dandan-nav-item1">\n' +
-                            '                                <p id="dandan_number">× ' + ddCount + '</p>\n' +
-                            '                            </div>\n' +
-                            '                            <div class="dandan-nav-item2">\n' +
-                            '                                <p>你的蛋蛋们正在安详的躺在蛋窝里~zzz</p>\n' +
-                            '                                <br>\n' +
-                            '                                <button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-radius">买入</button>\n' +
-                            '                                <button onclick="sellDD(' + ddCount + ',' + eType + ',' + level + ')"\n' +
-                            '                                        class="layui-btn layui-btn-danger layui-btn-sm layui-btn-radius">出售\n' +
-                            '                                </button>\n' +
-                            '                            </div>\n' +
-                            '                        </dt>\n' +
-                            '                    </dl>');
-                    });
+                    $("#ddcAuction").append(
+                        '<dl class="layui-nav-dandan">\n' +
+                        '                        <dt class="">\n' +
+                        '                            <img src="./img/dandan.png" class="dandan-img">\n' +
+                        '                            <div class="dandan-nav-item1">\n' +
+                        '                                <p>×' +salesCount+'</p>\n' +
+                        '                            </div>\n' +
+                        '                            <div class="dandan-nav-item2">\n' +
+                        '                                <p>价格：'+price+'ETH</p>\n' +
+                        '                                <p>超过80%的卖家</p><br>\n' +
+                        '                                <button onclick="canlcelDD('+id+','+salesCount+')"\n' +
+                        '                                        class="layui-btn layui-btn-primary layui-btn-sm layui-btn-radius">取消售卖\n' +
+                        '                                </button>\n' +
+                        '                            </div>\n' +
+                        '                        </dt>\n' +
+                        '                    </dl>')
                 });
             }
         });
     }
 
-    function canlcelDD() {
+
+
+    function canlcelDD(id,salesCount) {
         layer.open({
             title: '撤回卖出',
             type: 1,
@@ -237,18 +224,20 @@
             anim: 2,
             area: ['315px', '240px'],
             shadeClose: true, //开启遮罩关闭
-            content: '<div class="dandan-modal"><img src="./img/dandan.png" class="dandan-img"><div class="dandan-nav-modal"><p>共5颗，是否确定撤回卖出？</p></div></div>'
+            content: '<div class="dandan-modal"><img src="./img/dandan.png" class="dandan-img"><div class="dandan-nav-modal"><p>共'+salesCount+' DDC，是否确定撤回卖出？</p></div></div>'
             + '<div class="dandan-modal-q"><button style="background-color: #e3664c;padding: 0 30px;" class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius">确定撤回</button></div>'
+            , btn: ['确定撤回', '关闭']
+            , yes: function (index, layero) {
+                salesAndPlayInstance.cancelEggAuction.sendTransaction(id, function (error, result) {
+                    console.log(result.toString());
+                });
+            }
         });
     }
 
-    function sellDD(ddCount, _eType, _level) {
-        if (!parseInt(ddCount) > 0) {
-            layer.msg('没有足够的蛋蛋出售');
-            return;
-        }
+    function sellDDC() {
         layer.open({
-            title: '卖出蛋蛋',
+            title: '卖出蛋蛋币',
             type: 1,
             skin: 'layui-layer-demo', //样式类名
             closeBtn: 1, //不显示关闭按钮
@@ -270,8 +259,6 @@
                 var _price = $("#dd_price").val();
                 var price = web3.toWei(_price, 'ether');
                 var expiresAt = new Date().getTime() * 2;
-                var eType = _eType.toString();
-                var level = _level.toString();
                 var userName = localStorage.getItem("userName");
                 if (!count) {
                     layer.msg('请输入数量');
@@ -281,13 +268,9 @@
                     layer.msg('请输入价格');
                     return;
                 }
-                if (count > ddCount) {
-                    layer.msg('没有足够的蛋蛋');
-                    return;
-                }
-
-                salesAndPlayInstance.createEggAuction.sendTransaction(price, expiresAt, count, eType, userName, function (error, result) {
-
+                console.log(price+","+expiresAt+","+count+","+userName);
+                salesAndPlayInstance.createEggAuction.sendTransaction(price, expiresAt, count, userName, function (error, result) {
+                    console.log(result.toString());
                 });
             }
         });

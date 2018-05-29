@@ -1,5 +1,5 @@
 var eggCardInstance = initContractEggCard(EggCardABI);
-var eggCardAuctionInstance = initContractEggCard(eggCardAuction);
+var eggCardAuctionInstance = initContractCardAuction(eggCardAuction);
 
 eggCardInstance.tokensOfOwner(account, function (error, result) {
     // console.log(result);
@@ -20,7 +20,7 @@ eggCardInstance.tokensOfOwner(account, function (error, result) {
             cardObj.attrId = res[6].toString();
             cardObj.count = 1;
             // console.log(cardObj);
-            console.log(j);
+            // console.log(j);
 
             // var cardObjTemp = new Object();
             // for (var x = 0; x < myCardArr.length; x++) {
@@ -48,6 +48,11 @@ eggCardInstance.tokensOfOwner(account, function (error, result) {
 
 // createCardAuction("3",0.06);
 
+// 取消卡牌拍卖
+// eggCardAuctionInstance.cancelCardAuction.sendTransaction("2", function (error, result) {
+//
+// });
+
 function sellBB(cardId) {
     layer.open({
         title: '卖出宝贝',
@@ -74,6 +79,9 @@ function sellBB(cardId) {
             var price = web3.toWei(_price, 'ether');
             var expiresAt = new Date().getTime() * 2;
             console.log(cardId + "," + price + "," + expiresAt);
+            eggCardInstance.approve.sendTransaction(cardAuctionAddr, cardId, function (err, res) {
+                console.log(res);
+            });
             eggCardAuctionInstance.createCardAuction.sendTransaction(cardId, price, expiresAt, function (error, result) {
 
             });
