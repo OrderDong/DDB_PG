@@ -156,11 +156,10 @@
     function getAuctionList() {
         console.log(actionInstance);
         actionInstance.getAuctions(function (error, result) {
-        	
-            if (result[0].c.length > 0) {
-            	console.log(result[0].c.length);
-                for (i = 0; i < result[0].c.length; i++) {
-                    actionInstance.getAuction(result[0].c[i], function (error, res) {
+            if (result.length > 0) {
+            	console.log(result.length);
+                for (i = 0; i < result.length; i++) {
+                    actionInstance.getAuction(result[i], function (error, res) {
                     	console.log(res);
                         var id = parseInt(res[0].toString());
                         var seller = res[1].toString();
