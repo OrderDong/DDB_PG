@@ -218,16 +218,6 @@
             alert("数量不正确！");
         }
         console.log(_auctionId + "," + byCount);
-        /*actionInstance.executeEggAuction(_auctionId,byCount,function(error, result) {
-            if(err != null) {
-                alert("There was an error.");
-                alert(err);
-                return;
-            }
-            alert("success");
-        });
-        */
-//				actionInstance.executeEggAuction(_auctionId,byCount).send({from: web3.eth.defaultAccount, value: web3.toWei(_price)});
         actionInstance.executeEggAuction.sendTransaction(_auctionId, byCount, {
             from: web3.eth.defaultAccount,
             value: web3.toWei(_price*byCount)
