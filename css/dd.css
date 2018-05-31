@@ -304,3 +304,47 @@
     border-bottom: 1px solid #ccc;
     padding: 10px;
 }
+/*----------战斗-------*/
+.war-dd-box {
+    width: 355px;
+    height: 552px;
+    border: 1px solid #d0c8c8;
+    border-radius: 6px;
+    margin: 10px 5px 5px 5px;
+    float: left;
+}
+
+.war-dd-user {
+    height: 48px;
+    margin: 0 5px 0 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.war-dd-baby {
+    text-align: center;
+}
+
+.war-baby-img {
+    margin: 10px;
+}
+.war-baby-img img{
+    margin: 0 auto;
+    width: 145px;
+    border-radius: 16%;
+}
+.war-baby-img, .layui-btn-xs{
+    padding: 0 21px;
+}
+.war-dd-baby button{
+    margin: 4px 0px 4px 0px;
+    font-size: 13px;
+    background-color:#74b314;
+}
+.war-dd-baby p{
+    font-size: 12px;
+    margin: 4px 0px 4px 0px;
+}
+.war-dd-buyinfo {
+    margin: 0 5px 0 5px;
+    border-bottom: 1px solid #ccc;
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<meta HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+	<meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+	<meta HTTP-EQUIV="expires" CONTENT="0">
+    <title>蛋蛋的世界-战争</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/dd.css">
+    <script language="javascript" type="text/javascript" src="js/EggAuctionWar_abi.js"></script>
+    <script language="javascript" type="text/javascript" src="js/EggCard_abi.js"></script>
+    <script language="javascript" type="text/javascript" src="js/EggCardAuction_abi.js"></script>
+    <script language="javascript" type="text/javascript" src="js/DanDanCoin_abi.js"></script>
+    <script language="javascript" type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body class="">
+<div class="dandan_app">
+    <!--头部-->
+    <div class="layui-header">
+        <ul class="layui-nav">
+            <li class="layui-nav-item" lay-unselect="">
+                <a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="dd-nav-img">蛋蛋的世界</a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="market.html">
+                    市场
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="war.html">
+                    战争
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="mydd.html">
+                    我的
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--主体-->
+    <div class="layui-container">
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">蛋蛋の战斗</li>
+                <li>战斗记录</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div id="warContent">
+                        <div class="war-dd-box">
+                            <div class="war-dd-user">
+                                <img src="img/photo.png" class="market-dd-img">
+                                <p class="war-dd-name" id="curName">superna</p>
+                            </div>
+                            <div class="war-dd-baby" id="preWar">
+                                <div class="war-baby-img"><img src="img/dandan.png"></div>
+                                <button onclick="addWar()" class="layui-btn layui-btn-radius layui-btn-normal">加入战斗</button>
+                                <p class="" style="margin-bottom: 20px;">此次战斗需要消耗10枚蛋蛋币，请仔细阅读战斗说明，开启战斗吧！</p>
+                            	<div class="war-dd-buyinfo">
+	                            	<p class="" style="margin-bottom: 20px;">
+	                            		我的窝里蛋蛋币
+	                            		<button onclick="javascript:location.href='market.html'" class="layui-btn layui-btn-radius layui-btn-normal">买更多</button>
+	                            	</p>
+                            	</div>
+                            </div>
+                            <div class="war-dd-baby" id="afterWar" style="display: none;">
+                                <div class="war-baby-img"><img src="img/dandan.png"></div>
+                                <p class="" style="font-size: 14px;">等待智能合约开启奖励...</p>
+                                	倒计时：<span id="time" style="font-size: 18px;">60</span>
+                                <p class="" style="margin-bottom: 20px;">智能合约将随机抽取您的奖品，请耐心等待！</p>
+                            	<div class="war-dd-buyinfo">
+	                            	<p class="" style="margin-bottom: 20px;">
+	                            	</p>
+                            	</div>
+                            </div>
+                            <div class="war-dd-baby" style="text-align: left;margin: 10px 10px 0 10px;">
+                        		<p class="">战斗玩法：</p>
+                        		<p class="">1、每次参加战斗消耗10枚蛋蛋币</p>
+                        		<p class="">2、每次参加战斗消耗10枚蛋蛋币</p>
+                        		<p class="">3、每次参加战斗消耗10枚蛋蛋币</p>
+                        		<p class="">4、每次参加战斗消耗10枚蛋蛋币</p>
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item" id="warRecord">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./layui/layui.js"></script>
+<script>
+    layui.use(['layer', 'form', 'element'], function () {
+        var layer = layui.layer,
+            element = layui.element,
+            form = layui.form;
+    });
+</script>
+<script language="javascript" type="text/javascript" src="js/common.js"></script>
+<script>
+    var actionInstance = initContractAuction(SalesAndPlayABI);
+    var eggAuctionInstance = initContractCardAuction(eggCardAuction);
+    var eggCardInstance = initContractEggCard(EggCardABI);
+    var dandanInstance = initContractDanDan(DanDanABI);
+    
+    
+    var account = web3.eth.defaultAccount;
+    var userName = localStorage.getItem("userName");
+	$("#curName").html(userName);
+	function addWar() {
+        layer.open({
+            title: '加入战场',
+            type: 1,
+            skin: 'layui-layer-demo', //样式类名
+            closeBtn: 1, //不显示关闭按钮
+            anim: 2,
+            area: ['315px', '290px'],
+            shadeClose: true, //开启遮罩关闭
+            content: '<div class="market-modal">' +
+            '<div class="market-modal-img"><img src="img/dandan.png"></div>' +
+            '  <div class="market-modal-p">' +
+            '    <p>数量：10 个</p>' +
+            '  </div></div>' +
+            '<div class="market-modal-submit"><label class="layui-form-label1">战斗数量：</label>' +
+            '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">-</button>' +
+            '<input type="text" name="title" class="layui-input1" id="buyCount" value="10">' +
+            '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">+</button>' +
+            '<button class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius" onclick="executeWar()">授权并开启</button></div>'
+        });
+    }
+	function executeWar() {
+		console.log(dandanInstance);
+		dandanInstance.balanceOf(account,function (error, result) {
+			var ddcCount = web3.fromWei(result.toString(), 'ether');
+			console.log("ddcCount:"+ddcCount);
+			if(ddcCount <=10){
+				alert("蛋蛋币数量不足，请先购买！")
+				return false;
+			}
+			//倒计时
+			//countTime();
+			dandanInstance.allowance(account,auctionAddr,function (err,res){
+				console.log(web3.fromWei(res.toString(),"ether"));
+				var allowCount = res.toString();
+				if(allowCount !=null && parseInt(allowCount)>=10){
+					actionInstance.joinWar(10,function (jerr,jres){
+						if(jerr != null){
+							console.log(jerr);
+							return false;
+						}
+						var txHash = jres.toString();
+						console.log("txHash.....:"+txHash);
+						$.ajax({
+						   type: "POST",
+						   async: true,
+						   url: "http://192.168.138.157:8080/admin/card/open",
+						   data: "txHash="+txHash+"&addr="+account,
+						   success: function(msg){
+						     alert("奖品开启中，请耐心等待");
+						     alert(msg);
+						   }
+						});
+						countTime();
+					});
+				}else{
+					alert("蛋蛋币未授权");
+					return false;
+				}
+			});
+			/*dandanInstance.approve(auctionAddr,web3.toWei(100,"ether"),function (err,res){
+				if(err != null){
+					console.log(err);
+					return false;
+				}
+				console.log(res.toString());
+			});*/
+    	});
+    }
+	
+	function countTime(){
+		var setTime;
+        var time=parseInt($("#time").text());
+        setTime=setInterval(function(){
+            if(time<=0){
+                clearInterval(setTime);
+                $("#time").text("60");
+                //倒计时结束 获取数据
+                
+                return;
+            }else{
+            }
+            time--;
+            $("#time").text(time);
+        },1000);
+        $("#preWar").hide();
+        $("#afterWar").show();
+	}
+</script>
+</body>
+
+</html>

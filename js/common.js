@@ -1,4 +1,4 @@
-var auctionAddr = "0x0Aff9533628878d1f817Db97872271ea23Cb050a";
+var auctionAddr = "0xB7182506B47A8713F95051e5D21b30f5015AB8dc";
 var tokenAddr = "0x4195E850A8504ef0Cc184Ac1FC22B5Ee5AF0321B";
 var eggCardAddr = "0xe007E924e6E3641AB9CE0b8a4bf0c9F2F59BB83E";
 var cardAuctionAddr = "0x7A1b2716c3bbb411877CC782fA4Bfdf80538589c";
@@ -11,6 +11,7 @@ var accountInterval = setInterval(function() {
 }, 100);
 //ERC20合约
 function initContractDanDan(danAbi){
+	console.log("initContractDanDan:"+tokenAddr);
 	var MyContract = web3.eth.contract(danAbi);
 	var actionInstance = MyContract.at(tokenAddr);
 	return actionInstance;
