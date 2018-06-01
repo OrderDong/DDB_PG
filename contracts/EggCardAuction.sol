@@ -68,6 +68,7 @@ contract ERC20Interface {
 contract ERC721Interface {
     function ownerOf(uint256 tokenId) public view returns (address);
     function safeTransferFrom(address from, address to, uint256 tokenId) public;
+    function allowance(address _owner,uint256 _tokenId) public view returns (bool);
 }
 
 contract EggCardMarket is Ownable, Pausable {
@@ -186,30 +187,30 @@ contract EggCardMarket is Ownable, Pausable {
         uint256 index = _getAuctionIndexByToken(tokenId);
         auctionIndexs[index] = auctionIndexs[auctionIndexs.length.sub(1)];
         delete auctionIndexs[auctionIndexs.length.sub(1)];
+        auctionIndexs.length--;
         emit CardAuctionCancelled(auctionId, tokenId, auctionSeller,now);
     }
 
     function executeCardAuction(uint256 tokenId, uint256 price) public payable whenNotPaused {
         address seller = auctionByTokenId[tokenId].seller;
 
-        require(seller != address(0));
+        //require(seller != address(0));
         require(seller != msg.sender);
-        require(auctionByTokenId[tokenId].price == price);
-        require(now < auctionByTokenId[tokenId].expiresAt);
+        //require(auctionByTokenId[tokenId].price == price);
+        //require(now < auctionByTokenId[tokenId].expiresAt);
 
         require(seller == nonRegistry.ownerOf(tokenId));
 
         uint saleShareAmount = 0;
 
-        if (ownerCutFee > 0) {
+        /*if (ownerCutFee > 0) {
             saleShareAmount = price.mul(ownerCutFee).div(100);
-            // Transfer share amount for EggCardMarket Owner.
             acceptedToken.transferFrom(
                 msg.sender,
                 owner,
                 saleShareAmount
             );
-        }
+        }*/
 
         // Transfer sale amount to seller
         acceptedToken.transferFrom(
@@ -225,10 +226,11 @@ contract EggCardMarket is Ownable, Pausable {
         );
         uint256 auctionId = auctionByTokenId[tokenId].id;
         delete auctionByTokenId[tokenId];
-        ownershipAuctionCount[msg.sender] = ownershipAuctionCount[msg.sender].sub(1);
+        ownershipAuctionCount[seller] = ownershipAuctionCount[seller].sub(1);
         uint256 index = _getAuctionIndexByToken(tokenId);
         auctionIndexs[index] = auctionIndexs[auctionIndexs.length.sub(1)];
         delete auctionIndexs[auctionIndexs.length.sub(1)];
+        auctionIndexs.length--;
         emit CardAuctionSuccessful(auctionId, tokenId, seller, price, msg.sender,now);
     }
     function countAuctionOf(address _owner) public view returns (uint256 count) {

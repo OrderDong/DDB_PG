@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="layui-nav-item">
-                <a href="battle.html">
+                <a href="war.html">
                     战争
                 </a>
             </li>
@@ -257,6 +257,7 @@
                        	time = res[4].toString();
                        	console.log("eType:"+eType+",attrId:"+attrId+",name:"+name);
 	                    var value = web3.fromWei(price, 'ether');
+	                    $("#salesContent").empty();
 	                    $("#salesContent").append('<div class="market-dd-box"><div class="market-dd-user">' +
 	                        '<img src="img/photo.png" class="market-dd-img"><p class="market-dd-name">' + userName + '</p></div>' +
 	                        '<div class="market-dd-baby"><div class="market-baby-img"><img src="img/jinniu.png"></div>' +

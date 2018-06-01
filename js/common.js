@@ -1,7 +1,8 @@
-var auctionAddr = "0xB7182506B47A8713F95051e5D21b30f5015AB8dc";
+var auctionAddr = "0x09b4685F46e44194fBf23f251ba9Ca653EbB5425";
 var tokenAddr = "0x4195E850A8504ef0Cc184Ac1FC22B5Ee5AF0321B";
-var eggCardAddr = "0xe007E924e6E3641AB9CE0b8a4bf0c9F2F59BB83E";
-var cardAuctionAddr = "0x7A1b2716c3bbb411877CC782fA4Bfdf80538589c";
+var eggCardAddr = "0xf02F2421678A129CD22E4799954eaB73CB338555";
+var cardAuctionAddr = "0x88e5C51dBF8A289B05f33394D8879441352855A0";
+
 var ceAccount = "0x339177a6a2b21a8b7CE76811C86D3a2C99301355";
 var token20;
 
@@ -43,7 +44,7 @@ function initContractCardAuction(abi){
 function approveToken(dandanInstance){
 	token20.balanceOf(account, function (error, result) {
 	  var resEther = web3.fromWei(result.toString(), 'ether');
-	  token20.approve(auctionAddr,web3.toWei(resEther,"ether"),function (err,res){
+	  token20.approve(auctionAddr,web3.toWei(40,"ether"),function (err,res){
 				if(err != null){
 					console.log(err);
 					return false;

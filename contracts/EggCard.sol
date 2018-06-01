@@ -45,6 +45,7 @@ contract ERC721 {
     function approve(address _to, uint256 _tokenId) public;
     function transfer(address _to, uint256 _tokenId) public;
     function safeTransferFrom(address _from, address _to, uint256 _tokenId) public;
+    function allowance(address _owner,uint256 _tokenId) public view returns (bool);
 
     event Transfer(address from, address to, uint256 tokenId);
     event Approval(address owner, address approved, uint256 tokenId);
@@ -191,6 +192,9 @@ contract CardOwnership is CardBase, ERC721 {
         require(_owns(msg.sender, _tokenId));
         _transfer(msg.sender, _to, _tokenId);
     }
+    function allowance(address _claimant,uint256 _tokenId) public view returns (bool){
+        return cardSalesToApproved[_tokenId] == _claimant;
+    }
     function approve(address _to,uint256 _tokenId) public whenNotPaused{
         require(_owns(msg.sender, _tokenId));
         _approve(_tokenId, _to);
@@ -254,12 +258,12 @@ contract CardCore is CardOwnership {
         createdCount++;
         _createCard(0, 0,0,cardOwner);
     }
-    function createCard(uint256 _eType,uint256 _attrId,uint8 _level, address _owner) external onlyCEO {
+    function createCard(uint256 _eType,uint256 _attrId,uint8 _level, address _owner) external onlyCEO returns (uint256 tokenId)  {
         address cardOwner = _owner;
         if (cardOwner == address(0)) {
             cardOwner = ceoAddress;
         }
-        _createCard(_eType,_attrId,_level,cardOwner);
+        tokenId = _createCard(_eType,_attrId,_level,cardOwner);
     }
     function unpause() public onlyCEO whenPaused {
         require(newContractAddress == address(0));
