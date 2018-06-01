@@ -62,7 +62,7 @@
                                 <img src="img/photo.png" class="market-dd-img">
                                 <p class="war-dd-name" id="curName">superna</p>
                             </div>
-                            <div class="war-dd-baby" id="preWar">
+                            <div class="war-dd-baby" id="preWar" style="display: block;">
                                 <div class="war-baby-img"><img src="img/dandan.png"></div>
                                 <button onclick="addWar()" class="layui-btn layui-btn-radius layui-btn-normal">加入战斗</button>
                                 <p class="" style="margin-bottom: 20px;">此次战斗需要消耗10枚蛋蛋币，请仔细阅读战斗说明，开启战斗吧！</p>
@@ -83,6 +83,28 @@
 	                            	</p>
                             	</div>
                             </div>
+                            <div class="layui-tab-item" id="awardDiv" style="display: none;">
+                            	<span style="text-align: left;margin: 10px 0px 20px 5px;font-size: 16px;">战斗结果：</span>
+			                    <dl class="record-nav"  style="height: 100px;" id="awardGet">
+			                        <!--<dt class="record-nav1">
+			                            <div class="record-nav-item1">
+			                            	<span id="getDdc">蛋蛋币：2个</span>
+			                            </div>
+			                            <div class="record-nav-item2">
+			                              	已发放
+			                            </div>
+			                        </dt>
+			                        <dt class="record-nav1">
+			                            <div class="record-nav-item1">
+			                                <span>卡牌：金牛座</span>
+			                                
+			                            </div>
+			                            <div class="record-nav-item2">
+			                               	 已发放
+			                            </div>
+			                        </dt>-->
+			                    </dl>
+			                </div>
                             <div class="war-dd-baby" style="text-align: left;margin: 10px 10px 0 10px;">
                         		<p class="">战斗玩法：</p>
                         		<p class="">1、每次参加战斗消耗10枚蛋蛋币</p>
@@ -198,7 +220,6 @@
                 clearInterval(setTime);
                 $("#time").text("60");
                 //倒计时结束 获取数据
-                
                 return;
             }else{
             }
@@ -207,6 +228,35 @@
         },1000);
         $("#preWar").hide();
         $("#afterWar").show();
+	}
+	function getOpenData(){
+		$.ajax({
+		   type: "POST",
+		   async: false,
+		   url: "http://192.168.138.157:8080/admin/card/retdata",
+		   data: "account="+account,
+		   success: function(msg){
+		   		if(msg.status =="0"){
+		   			$("#awardDiv").show();
+		   			var data = msg.result;
+		   			var datas = data.split(",");
+		   			var str;
+		   			$("#awardGet").empty();
+		   			for(i=0;i<datas.length;i++){
+		   				if(i==0){
+		   					str = "蛋蛋币："+data[i]+"个";
+		   				}else{
+		   					str = "卡牌："+data[i]+",金牛座"
+		   				}
+		   				$("#awardGet").append('<dt class="record-nav1"><div class="record-nav-item1">'+
+			                            	'<span>'+str+'</span></div><div class="record-nav-item2">'+
+			                            	'已发放</div></dt>');
+		   			}
+		   		}else{
+		   			alert("请耐性等待...");
+		   		}
+		   }
+		});
 	}
 </script>
 </body>
