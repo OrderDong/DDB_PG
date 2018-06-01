@@ -2,6 +2,8 @@ var auctionAddr = "0xB7182506B47A8713F95051e5D21b30f5015AB8dc";
 var tokenAddr = "0x4195E850A8504ef0Cc184Ac1FC22B5Ee5AF0321B";
 var eggCardAddr = "0xe007E924e6E3641AB9CE0b8a4bf0c9F2F59BB83E";
 var cardAuctionAddr = "0x7A1b2716c3bbb411877CC782fA4Bfdf80538589c";
+var ceAccount = "0x339177a6a2b21a8b7CE76811C86D3a2C99301355";
+var token20;
 
 var account = web3.eth.accounts[0];
 var accountInterval = setInterval(function() {
@@ -13,8 +15,8 @@ var accountInterval = setInterval(function() {
 function initContractDanDan(danAbi){
 	console.log("initContractDanDan:"+tokenAddr);
 	var MyContract = web3.eth.contract(danAbi);
-	var actionInstance = MyContract.at(tokenAddr);
-	return actionInstance;
+	token20 = MyContract.at(tokenAddr);
+	return token20;
 }
 //蛋蛋销售合约
 function initContractAuction(salesAbi){
@@ -36,6 +38,19 @@ function initContractCardAuction(abi){
     var MyContract = web3.eth.contract(abi);
     var actionInstance = MyContract.at(cardAuctionAddr);
     return actionInstance;
+}
+//20token授权
+function approveToken(dandanInstance){
+	token20.balanceOf(account, function (error, result) {
+	  var resEther = web3.fromWei(result.toString(), 'ether');
+	  token20.approve(auctionAddr,web3.toWei(resEther,"ether"),function (err,res){
+				if(err != null){
+					console.log(err);
+					return false;
+				}
+				console.log(res.toString());
+			});
+	});
 }
 
 window.addEventListener('load', function() {

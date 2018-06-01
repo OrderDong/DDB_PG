@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="layui-nav-item">
-                <a href="battle.html">
+                <a href="war.html">
                     战争
                 </a>
             </li>
@@ -56,7 +56,10 @@
                     <p id="userDDC" style="font-size: 12px;">0 DDC（蛋蛋币）</p>
                 </div>
                 <div class="dd-nav-item2">
-                    <button class="layui-btn layui-btn-primary layui-btn-radius">编辑</button>
+                    <button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-radius">编辑</button>
+                </div>
+                <div class="dd-nav-item2" style="display: none;" id="manaGet">
+                    <button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-radius">提额</button>
                 </div>
             </dt>
         </dl>
@@ -84,6 +87,12 @@
                             </div>
                         </dt>
                     </dl>
+                    <div class="war-dd-baby" style="text-align: left;margin: 10px 10px 0 10px;">
+                		<p class="">授权：</p>
+                		<p class=""><input type="checkbox" onclick="approveToken();"/>授权合约以您的名义操作DDC</p>
+                		<!--TODO 是否授权在此?? -->
+                		<p class=""><input type="checkbox"/>授权合约以您的名义操作Card</p>
+                	</div>
                 </div>
                 <div class="layui-tab-item">
                     <div class="mydd-dd-baby" id="eggCardAuction">
@@ -164,7 +173,13 @@
     danDanCoinInstance.allowance(account, auctionAddr, function (err, res) {
         console.log(res.toString());
     });
-
+	
+	//管理提额
+	//console.log("account type:"+(typeof account)+","+account+","+ceAccount);
+	if(account.toLowerCase() == ceAccount.toLowerCase()){
+		$("#manaGet").show();
+	}
+	
     getMyInfo();
 
 
@@ -275,6 +290,11 @@
             }
         });
     }
+    $("#manaGet").bind("click",function(){
+	  salesAndPlayInstance.withdrawBalance(web3.toWei(1,"ether"), function (err, res) {
+	        console.log(res.toString());
+	    });
+	});
 </script>
 </body>
 
