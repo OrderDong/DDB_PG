@@ -171,7 +171,10 @@
 //    });
 
     danDanCoinInstance.allowance(account, auctionAddr, function (err, res) {
-        console.log(res.toString());
+        console.log("拍卖合约授权蛋蛋币数量："+res.toString());
+    });
+    danDanCoinInstance.allowance(account, cardAuctionAddr, function (err, res) {
+        console.log("卡牌合约授权蛋蛋币数量："+res.toString());
     });
 	
 	//管理提额
@@ -195,7 +198,7 @@
         });
 
         salesAndPlayInstance.getAuctionsByOwner(account, function (error, result) {
-            console.log(result);
+//            console.log(result);
             for (var i = 0; i < result.length; i++) {
                 var id = result[i].toString();
                 salesAndPlayInstance.getAuction(id, function (err, res) {

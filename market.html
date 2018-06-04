@@ -295,13 +295,13 @@
             '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">-</button>' +
             '<input type="text" readonly name="title" class="layui-input1" id="buyCount" value="1">' +
             '<button class="layui-btn layui-btn-sm layui-btn-primary layui-btn-radius">+</button>' +
-            '<button class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius" onclick="buyCardEx(' + _tokenId + ',' + _price + ')">买入</button></div>'
+            '<button class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius" onclick="buyCardEx(' + _tokenId + ')">买入</button></div>'
         });
     }
 	
-	function buyCardEx(_tokenId,_price) {
-        console.log(_tokenId + "," + _price);
-        eggAuctionInstance.executeCardAuction.sendTransaction(_tokenId, _price, function (error, result) {
+	function buyCardEx(_tokenId) {
+        console.log(_tokenId);
+        eggAuctionInstance.executeCardAuction.sendTransaction(_tokenId, function (error, result) {
 			if(error != null){
 				console.log(error);
 			}

@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
-	<meta HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
-	<meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
-	<meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
     <title>蛋蛋的世界-战争</title>
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link rel="stylesheet" href="./css/dd.css">
@@ -64,59 +64,62 @@
                             </div>
                             <div class="war-dd-baby" id="preWar" style="display: block;">
                                 <div class="war-baby-img"><img src="img/dandan.png"></div>
-                                <button onclick="addWar()" class="layui-btn layui-btn-radius layui-btn-normal">加入战斗</button>
+                                <button onclick="addWar()" class="layui-btn layui-btn-radius layui-btn-normal">加入战斗
+                                </button>
                                 <p class="" style="margin-bottom: 20px;">此次战斗需要消耗10枚蛋蛋币，请仔细阅读战斗说明，开启战斗吧！</p>
-                            	<div class="war-dd-buyinfo">
-	                            	<p class="" style="margin-bottom: 20px;">
-	                            		我的窝里蛋蛋币
-	                            		<button onclick="javascript:location.href='market.html'" class="layui-btn layui-btn-radius layui-btn-normal">买更多</button>
-	                            	</p>
-                            	</div>
+                                <div class="war-dd-buyinfo">
+                                    <p class="" style="margin-bottom: 20px;">
+                                        我的窝里蛋蛋币
+                                        <button onclick="javascript:location.href='market.html'"
+                                                class="layui-btn layui-btn-radius layui-btn-normal">买更多
+                                        </button>
+                                    </p>
+                                </div>
                             </div>
                             <div class="war-dd-baby" id="afterWar" style="display: none;">
                                 <div class="war-baby-img"><img src="img/dandan.png"></div>
                                 <p class="" style="font-size: 14px;">等待智能合约开启奖励...</p>
-                                	倒计时：<span id="time" style="font-size: 18px;">60</span>
+                                倒计时：<span id="time" style="font-size: 18px;">60</span>
                                 <p class="" style="margin-bottom: 20px;">智能合约将随机抽取您的奖品，请耐心等待！</p>
-                            	<div class="war-dd-buyinfo">
-	                            	<p class="" style="margin-bottom: 20px;">
-	                            	</p>
-                            	</div>
+                                <div class="war-dd-buyinfo">
+                                    <p class="" style="margin-bottom: 20px;">
+                                    </p>
+                                </div>
                             </div>
                             <div class="layui-tab-item" id="awardDiv" style="display: none;">
-                            	<span style="text-align: left;margin: 10px 0px 20px 5px;font-size: 16px;">战斗结果：</span>
-			                    <dl class="record-nav"  style="height: 100px;" id="awardGet">
-			                        <!--<dt class="record-nav1">
-			                            <div class="record-nav-item1">
-			                            	<span id="getDdc">蛋蛋币：2个</span>
-			                            </div>
-			                            <div class="record-nav-item2">
-			                              	已发放
-			                            </div>
-			                        </dt>
-			                        <dt class="record-nav1">
-			                            <div class="record-nav-item1">
-			                                <span>卡牌：金牛座</span>
-			                                
-			                            </div>
-			                            <div class="record-nav-item2">
-			                               	 已发放
-			                            </div>
-			                        </dt>-->
-			                    </dl>
-			                </div>
+                                <span style="text-align: left;margin: 10px 0px 20px 5px;font-size: 16px;">战斗结果：</span>
+                                <dl class="record-nav" style="height: 100px;" id="awardGet">
+                                    <!--<dt class="record-nav1">
+                                        <div class="record-nav-item1">
+                                            <span id="getDdc">蛋蛋币：2个</span>
+                                        </div>
+                                        <div class="record-nav-item2">
+                                              已发放
+                                        </div>
+                                    </dt>
+                                    <dt class="record-nav1">
+                                        <div class="record-nav-item1">
+                                            <span>卡牌：金牛座</span>
+
+                                        </div>
+                                        <div class="record-nav-item2">
+                                                已发放
+                                        </div>
+                                    </dt>-->
+                                </dl>
+                            </div>
                             <div class="war-dd-baby" style="text-align: left;margin: 10px 10px 0 10px;">
-                        		<p class="">战斗玩法：</p>
-                        		<p class="">1、每次参加战斗消耗10枚蛋蛋币</p>
-                        		<p class="">2、每次参加战斗消耗10枚蛋蛋币</p>
-                        		<p class="">3、每次参加战斗消耗10枚蛋蛋币</p>
-                        		<p class="">4、每次参加战斗消耗10枚蛋蛋币</p>
-                        	</div>
+                                <p class="">战斗玩法：</p>
+                                <p class="">1、每次参加战斗消耗10枚蛋蛋币</p>
+                                <p class="">2、每次参加战斗消耗10枚蛋蛋币</p>
+                                <p class="">3、每次参加战斗消耗10枚蛋蛋币</p>
+                                <p class="">4、每次参加战斗消耗10枚蛋蛋币</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="layui-tab-item" id="warRecord">
-                  
+
                 </div>
             </div>
         </div>
@@ -137,12 +140,13 @@
     var eggAuctionInstance = initContractCardAuction(eggCardAuction);
     var eggCardInstance = initContractEggCard(EggCardABI);
     var dandanInstance = initContractDanDan(DanDanABI);
-    
-    
+
+
     var account = web3.eth.defaultAccount;
     var userName = localStorage.getItem("userName");
-	$("#curName").html(userName);
-	function addWar() {
+    $("#curName").html(userName);
+
+    function addWar() {
         layer.open({
             title: '加入战场',
             type: 1,
@@ -163,101 +167,143 @@
             '<button class="layui-btn layui-btn-sm layui-btn-normal layui-btn-radius" onclick="executeWar()">授权并开启</button></div>'
         });
     }
-	function executeWar() {
-		console.log(dandanInstance);
-		dandanInstance.balanceOf(account,function (error, result) {
-			var ddcCount = web3.fromWei(result.toString(), 'ether');
-			console.log("ddcCount:"+ddcCount);
-			if(ddcCount <=10){
-				alert("蛋蛋币数量不足，请先购买！")
-				return false;
-			}
-			//倒计时
-			//countTime();
-			dandanInstance.allowance(account,auctionAddr,function (err,res){
-				console.log(web3.fromWei(res.toString(),"ether"));
-				var allowCount = res.toString();
-				if(allowCount !=null && parseInt(allowCount)>=10){
-					actionInstance.joinWar(10,function (jerr,jres){
-						if(jerr != null){
-							console.log(jerr);
-							return false;
-						}
-						var txHash = jres.toString();
-						console.log("txHash.....:"+txHash);
-						$.ajax({
-						   type: "POST",
-						   async: true,
-						   url: "http://192.168.138.157:8080/admin/card/open",
-						   data: "txHash="+txHash+"&addr="+account,
-						   success: function(msg){
-						     alert("奖品开启中，请耐心等待");
-						     alert(msg);
-						   }
-						});
-						countTime();
-					});
-				}else{
-					alert("蛋蛋币未授权");
-					return false;
-				}
-			});
-			/*dandanInstance.approve(auctionAddr,web3.toWei(100,"ether"),function (err,res){
-				if(err != null){
-					console.log(err);
-					return false;
-				}
-				console.log(res.toString());
-			});*/
-    	});
+
+    function executeWar() {
+        console.log(dandanInstance);
+        dandanInstance.balanceOf(account, function (error, result) {
+            var ddcCount = web3.fromWei(result.toString(), 'ether');
+            console.log("ddcCount:" + ddcCount);
+            if (ddcCount <= 10) {
+                alert("蛋蛋币数量不足，请先购买！")
+                return false;
+            }
+            //倒计时
+            //countTime();
+            dandanInstance.allowance(account, auctionAddr, function (err, res) {
+                console.log(web3.fromWei(res.toString(), "ether"));
+                var allowCount = res.toString();
+                if (allowCount != null && parseInt(allowCount) >= 10) {
+                    actionInstance.joinWar(10, function (jerr, jres) {
+                        if (jerr != null) {
+                            console.log(jerr);
+                            return false;
+                        }
+                        var txHash = jres.toString();
+                        console.log("txHash.....:" + txHash);
+//                        setTimeout('openAward('+txHash+','+account+')',1000*60*2);
+                        $.ajax({
+                            type: "POST",
+                            async: true,
+                            url: "http://127.0.0.1:8080/admin/card/open",
+                            data: "txHash=" + txHash + "&addr=" + account,
+                            success: function (msg) {
+                                alert("奖品开启中，请耐心等待");
+                                alert(msg);
+                            }
+                        });
+                        countTime();
+                    });
+                } else {
+                    alert("蛋蛋币未授权");
+                    return false;
+                }
+            });
+
+            /*dandanInstance.approve(auctionAddr,web3.toWei(100,"ether"),function (err,res){
+                if(err != null){
+                    console.log(err);
+                    return false;
+                }
+                console.log(res.toString());
+            });*/
+        });
     }
-	
-	function countTime(){
-		var setTime;
-        var time=parseInt($("#time").text());
-        setTime=setInterval(function(){
-            if(time<=0){
+
+    /*    openAward("0x93574d1a39716b2210d106f9147201bb3145a032688572821e3d0eba9257b939",account);
+        function openAward(txHash,account) {
+            $.ajax({
+                type: "POST",
+                async: true,
+                url: "http://127.0.0.1:8080/admin/card/open",
+                data: "txHash="+txHash+"&addr="+account,
+                success: function(msg){
+                    alert("奖品开启中，请耐心等待");
+                    alert(msg);
+                }
+            });
+        }*/
+
+    function countTime() {
+        var setTime;
+        var time = parseInt($("#time").text());
+        setTime = setInterval(function () {
+            if (time <= 0) {
                 clearInterval(setTime);
                 $("#time").text("60");
                 //倒计时结束 获取数据
                 return;
-            }else{
+            } else {
             }
             time--;
             $("#time").text(time);
-        },1000);
+        }, 1000);
         $("#preWar").hide();
         $("#afterWar").show();
-	}
-	function getOpenData(){
-		$.ajax({
-		   type: "POST",
-		   async: false,
-		   url: "http://192.168.138.157:8080/admin/card/retdata",
-		   data: "account="+account,
-		   success: function(msg){
-		   		if(msg.status =="0"){
-		   			$("#awardDiv").show();
-		   			var data = msg.result;
-		   			var datas = data.split(",");
-		   			var str;
-		   			$("#awardGet").empty();
-		   			for(i=0;i<datas.length;i++){
-		   				if(i==0){
-		   					str = "蛋蛋币："+data[i]+"个";
-		   				}else{
-		   					str = "卡牌："+data[i]+",金牛座"
-		   				}
-		   				$("#awardGet").append('<dt class="record-nav1"><div class="record-nav-item1">'+
-			                            	'<span>'+str+'</span></div><div class="record-nav-item2">'+
-			                            	'已发放</div></dt>');
-		   			}
-		   		}else{
-		   			alert("请耐性等待...");
-		   		}
-		   }
-		});
-	}
+    }
+
+    getOpenData();
+
+    function getOpenData() {
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "http://127.0.0.1:8080/admin/card/retdata",
+            data: "account=" + account,
+            success: function (msg) {
+                var data = msg.result;
+                if (data) {
+                    $("#awardDiv").show();
+                    if(data.statusDdc == 0 && data.statusCard == 0) {
+                        alert("正在开奖，请稍候...");
+                    } else {
+                        $("#awardGet").empty();
+                        var tokenCount = "蛋蛋币：" + data.tokenCount + "个";
+                        var cardId = "卡牌：" + data.cardId + ",金牛座";
+                        var updateTime = dateFtt("yyyy-MM-dd hh:mm:ss",new Date(data.updateTime));
+
+                        $("#awardGet").append('<dt class="record-nav1"><div class="record-nav-item1">' +
+                            '<span>' + tokenCount + '</span></div><div class="record-nav-item2">' +
+                            '已发放</div></dt>');
+                        $("#awardGet").append('<dt class="record-nav1"><div class="record-nav-item1">' +
+                            '<span>' + cardId + '</span></div><div class="record-nav-item2">' +
+                            '已发放</div></dt>');
+                        $("#awardGet").append('<dt class="record-nav1"><div class="record-nav-item1">' +
+                            '<span>时间：' + updateTime + '</span></div></dt>');
+                    }
+                }
+            }
+        });
+    }
+
+    /**************************************时间格式化处理************************************/
+    function dateFtt(fmt,date)
+    { //author: meizz
+        var o = {
+            "M+" : date.getMonth()+1,                 //月份
+            "d+" : date.getDate(),                    //日
+            "h+" : date.getHours(),                   //小时
+            "m+" : date.getMinutes(),                 //分
+            "s+" : date.getSeconds(),                 //秒
+            "q+" : Math.floor((date.getMonth()+3)/3), //季度
+            "S"  : date.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt))
+            fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(var k in o)
+            if(new RegExp("("+ k +")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return fmt;
+    }
 </script>
 </body>
 

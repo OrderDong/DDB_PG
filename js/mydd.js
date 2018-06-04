@@ -42,7 +42,7 @@ eggCardInstance.tokensOfOwner(account, function (error, result) {
 
         });
     }
-    console.log(myCardArr);
+    // console.log(myCardArr);
 
 });
 
