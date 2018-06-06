@@ -36,7 +36,7 @@ eggCardInstance.tokensOfOwner(account, function (error, result) {
 
             $("#eggCardAuction").append('<div onclick="sellBB(' + cardObj.cardId + ')" class="mydd-dd-box">\n' +
                 '                            <div class="mydd-baby-img"><img src="http://t.cn/RCzsdCq"></div>\n' +
-                '                            <p class="">'+cardMapping[cardObj.cardId] + cardObj.cardId + '</p>\n' +
+                '                            <p class="">'+cardMapping[cardObj.eType] + cardObj.eType + '</p>\n' +
                 '                        </div>')
 
 

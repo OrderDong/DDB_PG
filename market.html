@@ -116,42 +116,35 @@
     
     var account = web3.eth.defaultAccount;
     var userName = localStorage.getItem("userName");
-	//var eggCardInstance = initContractEggCard(EggCardABI);
-	/*eggCardInstance.approve.sendTransaction("0x7A1b2716c3bbb411877CC782fA4Bfdf80538589c", "0",{from:account}, function (err, res) {
-	    console.log(res);
-	});*/
 	
-    /*var myEvent = actionInstance.AuctionSuccessful({winner: account}, {fromBlock: 0, toBlock: 'latest'});
+    var myEvent = actionInstance.AuctionSuccessful({winner: account}, {fromBlock: 0, toBlock: 'latest'});
     myEvent.watch(function(error, result){
         var args = result.args;
-        var eType = args.eType.toString();
+        console.log(args);
         var salesCount = args.salesCount.toString();
-        var eTypeName;
-        if (eType == 0) {
-            eTypeName = " 颗白银蛋蛋";
-        }
-        var totalPrice = web3.fromWei(parseInt(args.totalPrice.toString())/parseInt(salesCount), 'ether');
 
-        var time = (new Date(parseInt(args.time)*1000)).Format("yyyy-MM-dd hh:mm:ss");
+        var price = web3.fromWei(args.price.toString(), 'ether');
+
+        var time = dateFtt("yyyy-MM-dd hh:mm:ss",new Date(parseInt(args.time)*1000));
 
         $("#salesRecord").append('' +
             '    <dl class="record-nav">\n' +
             '        <dt class="record-nav1">\n' +
-            '        <div class="record-nav-item1">\n' + salesCount + eTypeName + '</div>\n' +
+            '        <div class="record-nav-item1">\n' + salesCount + '</div>\n' +
             '    <div class="record-nav-item2">\n' +
             '        买入\n' +
             '        </div>\n' +
             '        </dt>\n' +
             '        <dt class="record-nav2">\n' +
-            '        <div class="record-nav-item1">\n' + totalPrice +
-            '         ETH 每颗\n' +
+            '        <div class="record-nav-item1">\n' + price +
+            '         ETH / DDC\n' +
             '    </div>\n' +
             '    <div class="record-nav-item2">\n' + time +
             '    </div>\n' +
             '    </dt>\n' +
             '    </dl>');
 
-    });*/
+    });
 
     function getAuctionList() {
         console.log(actionInstance);
