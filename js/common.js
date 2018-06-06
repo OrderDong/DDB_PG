@@ -85,3 +85,40 @@ window.addEventListener('load', function() {
     location.href = "./../sign.html";
   }
 });
+
+var cardMapping = new Array();
+cardMapping[0] = "白羊座";
+cardMapping[1] = "金牛座";
+cardMapping[2] = "双子座";
+cardMapping[3] = "巨蟹座";
+cardMapping[4] = "狮子座";
+cardMapping[5] = "处女座";
+cardMapping[6] = "天秤座";
+cardMapping[7] = "天蝎座";
+cardMapping[8] = "射手座";
+cardMapping[9] = "摩羯座";
+cardMapping[10] = "水瓶座";
+cardMapping[11] = "双鱼座";
+
+cardMapping[12] = "";
+cardMapping[13] = "";
+cardMapping[14] = "";
+cardMapping[15] = "";
+cardMapping[16] = "";
+cardMapping[17] = "";
+cardMapping[18] = "";
+cardMapping[19] = "";
+cardMapping[20] = "";
+cardMapping[21] = "";
+cardMapping[22] = "";
+cardMapping[23] = "";
+cardMapping[24] = "";
+cardMapping[25] = "";
+cardMapping[26] = "";
+cardMapping[27] = "";
+cardMapping[28] = "";
+cardMapping[29] = "";
+cardMapping[30] = "";
+cardMapping[31] = "";
+
+
