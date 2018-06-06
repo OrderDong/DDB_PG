@@ -194,7 +194,7 @@
                         $.ajax({
                             type: "POST",
                             async: true,
-                            url: "http://127.0.0.1:8080/admin/card/open",
+                            url: "http://http://192.168.138.157:8080/admin/card/open",
                             data: "txHash=" + txHash + "&addr=" + account,
                             success: function (msg) {
                                 alert("奖品开启中，请耐心等待");
@@ -257,7 +257,7 @@
         $.ajax({
             type: "POST",
             async: false,
-            url: "http://127.0.0.1:8080/admin/card/retdata",
+            url: "http://192.168.138.157:8080/admin/card/retdata",
             data: "account=" + account,
             success: function (msg) {
                 var data = msg.result;
