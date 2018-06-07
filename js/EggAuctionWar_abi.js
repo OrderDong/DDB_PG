@@ -5,12 +5,293 @@ var SalesAndPlayABI = [
 			{
 				"name": "_auctionId",
 				"type": "uint256"
+			},
+			{
+				"name": "_count",
+				"type": "uint256"
 			}
 		],
-		"name": "cancelEggAuction",
+		"name": "executeEggAuction",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "nonFungibleRegistry",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "auctionOnwer",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "seller",
+				"type": "address"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "price",
+				"type": "uint256"
+			},
+			{
+				"name": "expiresAt",
+				"type": "uint256"
+			},
+			{
+				"name": "salesCount",
+				"type": "uint256"
+			},
+			{
+				"name": "time",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_owner",
+				"type": "address"
+			}
+		],
+		"name": "getWarByOwner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "unpause",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_owner",
+				"type": "address"
+			}
+		],
+		"name": "getAuctionsByOwner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "acceptedToken",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "paused",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"name": "_count",
+				"type": "uint256"
+			},
+			{
+				"name": "_cardTokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "finishWar",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getAuction",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "seller",
+				"type": "address"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "price",
+				"type": "uint256"
+			},
+			{
+				"name": "expiresAt",
+				"type": "uint256"
+			},
+			{
+				"name": "salesCount",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "auctionIndex",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "pause",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_count",
+				"type": "uint256"
+			}
+		],
+		"name": "joinWar",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "publicationFeeInWei",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "indexArr",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -40,66 +321,83 @@ var SalesAndPlayABI = [
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "ownerCount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getAuctions",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "withdrawBalance",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
 				"name": "_auctionId",
 				"type": "uint256"
-			},
-			{
-				"name": "_count",
-				"type": "uint256"
 			}
 		],
-		"name": "executeEggAuction",
+		"name": "cancelEggAuction",
 		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"constant": false,
+		"constant": true,
 		"inputs": [
 			{
-				"name": "_to",
+				"name": "_owner",
 				"type": "address"
-			},
+			}
+		],
+		"name": "getCountByOwner",
+		"outputs": [
 			{
-				"name": "_count",
-				"type": "uint256"
-			},
-			{
-				"name": "_cardTokenId",
+				"name": "",
 				"type": "uint256"
 			}
 		],
-		"name": "finishWar",
-		"outputs": [],
 		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_count",
-				"type": "uint256"
-			}
-		],
-		"name": "joinWar",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "pause",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -117,19 +415,19 @@ var SalesAndPlayABI = [
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [],
-		"name": "unpause",
-		"outputs": [],
+		"inputs": [
+			{
+				"name": "_acceptedToken",
+				"type": "address"
+			},
+			{
+				"name": "_nonFungibleRegistry",
+				"type": "address"
+			}
+		],
 		"payable": false,
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [],
-		"name": "Pause",
-		"type": "event"
+		"type": "constructor"
 	},
 	{
 		"anonymous": false,
@@ -157,6 +455,33 @@ var SalesAndPlayABI = [
 		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": true,
+				"name": "ower",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "cardTokenId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "ddcCount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "time",
+				"type": "uint256"
+			}
+		],
+		"name": "WarExecuted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
 				"indexed": false,
 				"name": "id",
 				"type": "uint256"
@@ -168,17 +493,26 @@ var SalesAndPlayABI = [
 			},
 			{
 				"indexed": false,
+				"name": "price",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "expiresAt",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "salesCount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
 				"name": "time",
 				"type": "uint256"
 			}
 		],
-		"name": "AuctionCancelled",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [],
-		"name": "Unpause",
+		"name": "AuctionCreated",
 		"type": "event"
 	},
 	{
@@ -233,365 +567,23 @@ var SalesAndPlayABI = [
 			},
 			{
 				"indexed": false,
-				"name": "price",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "expiresAt",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "salesCount",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
 				"name": "time",
 				"type": "uint256"
 			}
 		],
-		"name": "AuctionCreated",
+		"name": "AuctionCancelled",
 		"type": "event"
 	},
 	{
 		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "ower",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "cardTokenId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "ddcCount",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "time",
-				"type": "uint256"
-			}
-		],
-		"name": "WarExecuted",
+		"inputs": [],
+		"name": "Pause",
 		"type": "event"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "withdrawBalance",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"name": "_acceptedToken",
-				"type": "address"
-			},
-			{
-				"name": "_nonFungibleRegistry",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"constant": true,
+		"anonymous": false,
 		"inputs": [],
-		"name": "acceptedToken",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "auctionIndex",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "auctionOnwer",
-		"outputs": [
-			{
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"name": "seller",
-				"type": "address"
-			},
-			{
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"name": "price",
-				"type": "uint256"
-			},
-			{
-				"name": "expiresAt",
-				"type": "uint256"
-			},
-			{
-				"name": "salesCount",
-				"type": "uint256"
-			},
-			{
-				"name": "time",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_id",
-				"type": "uint256"
-			}
-		],
-		"name": "getAuction",
-		"outputs": [
-			{
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"name": "seller",
-				"type": "address"
-			},
-			{
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"name": "price",
-				"type": "uint256"
-			},
-			{
-				"name": "expiresAt",
-				"type": "uint256"
-			},
-			{
-				"name": "salesCount",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getAuctions",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_owner",
-				"type": "address"
-			}
-		],
-		"name": "getAuctionsByOwner",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_owner",
-				"type": "address"
-			}
-		],
-		"name": "getCountByOwner",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_owner",
-				"type": "address"
-			}
-		],
-		"name": "getWarByOwner",
-		"outputs": [
-			{
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"name": "count",
-				"type": "uint256"
-			},
-			{
-				"name": "time",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "indexArr",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "nonFungibleRegistry",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "ownerCount",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "paused",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "publicationFeeInWei",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
+		"name": "Unpause",
+		"type": "event"
 	}
 ]

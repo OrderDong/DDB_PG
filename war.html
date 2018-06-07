@@ -268,7 +268,7 @@
                     } else {
                         $("#awardGet").empty();
                         var tokenCount = "蛋蛋币：" + data.tokenCount + "个";
-                        var cardId = "卡牌：" + data.cardId + ","+cardMapping[data.cardType];
+                        var cardId = "卡牌：" + data.cardType + ","+cardMapping[data.cardType];
                         var updateTime = dateFtt("yyyy-MM-dd hh:mm:ss",new Date(data.updateTime));
 
                         $("#awardGet").append('<dt class="record-nav1"><div class="record-nav-item1">' +
